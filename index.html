@@ -391,6 +391,7 @@ cn:{
    rows:['消费','曝光量','点击率','转化量','转化成本','关键词排名'],cols:['要处理的门槛','算正常波动的范围']},
   {id:'c3',ty:'a',q:'一个关键词要符合什么条件，你才会把它暂停',h:'例：连续 N 天有花费、花费累积超过 N 元、零询问，且不是品牌词'},
   {id:'c4',ty:'a',q:'什么情况你会提高出价？什么情况会降低'},
+  {id:'c4b',ty:'a',q:'PC 跟行动装置的广告表现有明显差异吗？你会分开设定出价或预算吗',h:'目前的历史资料没有拆分装置维度，这题是想知道有没有需要之后补上这个维度'},
   {id:'c5',ty:'a',q:'你什么时候会加否定词？加之前会先看什么'},
   {id:'c6',ty:'m',q:'过去一年做过最有效的三个调整',h:'请说明当时看到什么数据才决定这样做',
    rows:['调整一','调整二','调整三'],cols:['做了什么调整','当时看到什么现象','结果如何']},
@@ -425,6 +426,8 @@ cn:{
   {id:'g3',ty:'r',q:'从广告点击到商机成立，平均需要多久',o:['1 週以内','1 个月','3 个月','半年以上','不确定']},
   {id:'g4',ty:'a',q:'不同产品线的商机价值差异大吗？需要分开设定权重吗'},
   {id:'g5',ty:'m',q:'业务把 lead 标记为无效时，目前有哪些原因选项',h:'若目前没有标准化，请写下你认为该有哪些',
+   rows:['原因一','原因二','原因三','原因四','原因五'],cols:['原因名称']},
+  {id:'g5b',ty:'m',q:'商机／SQL 阶段最终没有成交时，主要原因有哪些分类',h:'这题跟上一题不一样 —— 上一题是询问阶段就被业务判定无效，这题是已经进到商机阶段、最后还是没成交。若目前没有标准化，请写下你认为该有哪些',
    rows:['原因一','原因二','原因三','原因四','原因五'],cols:['原因名称']},
   {id:'g6',ty:'r',q:'换算成新口径后，帳面转化成本会明显上升（因为只计算询问，不计算下载）。这件事你希望怎么对上层沟通',
    o:['由专案先向上说明换算原因，再上线','新旧口径并行一段时间，再逐步切换','只在内部使用新口径，对外报告维持旧口径','其他'],oth:1}]},
@@ -493,6 +496,7 @@ tw:{
    rows:['花費','曝光量','點閱率','轉換量','轉換成本','關鍵字排名'],cols:['要處理的門檻','算正常波動的範圍']},
   {id:'c3',ty:'a',q:'一個關鍵字要符合什麼條件，你才會把它暫停',h:'例：連續 N 天有花費、花費累積超過 N 元、零詢問，且不是品牌字'},
   {id:'c4',ty:'a',q:'什麼情況你會提高出價？什麼情況會降低'},
+  {id:'c4b',ty:'a',q:'PC 跟行動裝置的廣告表現有明顯差異嗎？你會分開設定出價或預算嗎',h:'目前的歷史資料沒有拆分裝置維度，這題是想知道有沒有需要之後補上這個維度'},
   {id:'c5',ty:'a',q:'你什麼時候會加排除關鍵字？加之前會先看什麼'},
   {id:'c6',ty:'m',q:'過去一年做過最有效的三個調整',h:'請說明當時看到什麼資料才決定這樣做',
    rows:['調整一','調整二','調整三'],cols:['做了什麼調整','當時看到什麼現象','結果如何']},
@@ -527,6 +531,8 @@ tw:{
   {id:'g3',ty:'r',q:'從廣告點擊到商機成立，平均需要多久',o:['1 週以內','1 個月','3 個月','半年以上','不確定']},
   {id:'g4',ty:'a',q:'不同產品線的商機價值差異大嗎？需要分開設定權重嗎'},
   {id:'g5',ty:'m',q:'業務把 lead 標記為無效時，目前有哪些原因選項',h:'若目前沒有標準化，請寫下你認為該有哪些',
+   rows:['原因一','原因二','原因三','原因四','原因五'],cols:['原因名稱']},
+  {id:'g5b',ty:'m',q:'商機／SQL 階段最終沒有成交時，主要原因有哪些分類',h:'這題跟上一題不一樣 —— 上一題是詢問階段就被業務判定無效，這題是已經進到商機階段、最後還是沒成交。若目前沒有標準化，請寫下你認為該有哪些',
    rows:['原因一','原因二','原因三','原因四','原因五'],cols:['原因名稱']},
   {id:'g6',ty:'r',q:'換算成新口徑後，帳面轉換成本會明顯上升（因為只計算詢問，不計算下載）。這件事你希望怎麼對上層溝通',
    o:['由專案先向上說明換算原因，再上線','新舊口徑並行一段時間，再逐步切換','只在內部使用新口徑，對外報告維持舊口徑','其他'],oth:1}]},
@@ -595,6 +601,7 @@ en:{
    rows:['Spend','Impressions','Click-through rate','Conversions','Cost per conversion','Keyword position'],cols:['Threshold to act','Range that is just noise']},
   {id:'c3',ty:'a',q:'What has to be true before you pause a keyword?',h:'e.g. spending for N consecutive days, more than ¥N cumulative, zero inquiries, and not a brand term'},
   {id:'c4',ty:'a',q:'When do you raise a bid? When do you lower one?'},
+  {id:'c4b',ty:'a',q:'Is there a meaningful performance gap between PC and mobile? Do you set bids or budgets separately for them?',h:'The historical data we have does not split out device — this question is to find out whether that dimension is worth adding.'},
   {id:'c5',ty:'a',q:'When do you add negative keywords, and what do you check first?'},
   {id:'c6',ty:'m',q:'The three most effective changes you made in the last year',h:'Tell us what you saw in the data that made you decide',
    rows:['Change 1','Change 2','Change 3'],cols:['What you changed','What you saw at the time','What happened']},
@@ -629,6 +636,8 @@ en:{
   {id:'g3',ty:'r',q:'On average, how long from ad click to a live opportunity?',o:['Within a week','About a month','About three months','Six months or more','Not sure']},
   {id:'g4',ty:'a',q:'Does opportunity value differ much between product lines? Should each be weighted separately?'},
   {id:'g5',ty:'m',q:'When sales marks a lead invalid, what reasons can they choose from today?',h:'If there is no standard list yet, write down the ones you think there should be',
+   rows:['Reason 1','Reason 2','Reason 3','Reason 4','Reason 5'],cols:['Reason']},
+  {id:'g5b',ty:'m',q:'When an opportunity / SQL ultimately does not close, what are the main categories of reasons?',h:'This is different from the previous question — that one is about leads disqualified at the inquiry stage; this one is about deals that made it to the opportunity stage and still did not close. If there is no standard list yet, write down the ones you think there should be',
    rows:['Reason 1','Reason 2','Reason 3','Reason 4','Reason 5'],cols:['Reason']},
   {id:'g6',ty:'r',q:'Under the new definition, reported cost per conversion will rise noticeably, because only inquiries count. How should that be communicated upward?',
    o:['The project explains the change to leadership before go-live','Run both definitions side by side for a while, then switch','Use the new definition internally and keep the old one for external reporting','Other'],oth:1}]},
@@ -706,8 +715,8 @@ cn:{
  sPick:'请选一个理由：', sDeclined:'已拒绝',
 
  /* dashboard */
- fPeriod:'期间', fCmp:'比较基准', fPlat:'平台', fBU:'事业线', fDev:'装置', fIntent:'意图层级',
- oYoY:'去年同期', oNone:'不比较', oAll:'全部', oPC:'PC', oMobile:'行动',
+ fPeriod:'期间', fCmp:'比较基准', fPlat:'平台', fBU:'事业线', fIntent:'意图层级（未接）',
+ oYoY:'去年同期', oNone:'不比较',
  oIntent:['全部','品牌词','品类词','竞品词','方案词'],
  oPlat:['百度','Google（未接）','Microsoft（未接）'], oBU:['EIOT','CORP（未接）'],
  bMakeRep:'产报表', bViewOps:'查看投放操作',
@@ -796,6 +805,10 @@ cn:{
  crDaysRows:[['点击 → 表单','2','同次或数日内'],['表单 → MQL','11','评分达标所需时间'],
   ['MQL → SQL','26','业务接手确认'],['SQL → 商机','43','需求确认与报价'],
   ['商机 → 成交','97','B2B 决策周期'],['<b>点击 → 商机</b>','<b>82</b>','<b>评估窗口至少要 3 个月</b>']],
+ crLossT:'三、商机／SQL 阶段为什么没有成交',
+ crLossNote:'业务退件原因回答的是「为什么没变成商机」；这一段回答的是「<b>商机成立后，为什么还是没成交</b>」——目前这些原因大多只存在业务同事的记忆里，没有系统化记录。系统化之后才能回答：该往哪个产品线加码，还是该调整报价策略，而不是一律怪投放不够精准。',
+ crLossH:'各原因占比（示意）',
+ crLossR:['报价高于竞品','客户预算取消或递延','技术规格不符','决策周期过长，后续未持续跟进','改选其他品牌／方案','失联，原因不明'],
  cr3:'一、关键词 × 商机 —— 这里会推翻两个直觉',
  crKwTh:['关键词','花费','询问','询问成本','MQL','商机','商机金额','商机成本','Lead 评分','建议'],
  crAdv:['维持','加码','降级','暂停'],
@@ -809,7 +822,7 @@ cn:{
  crNegH:'由退件原因自动产生的否定词建议',
  crNegBtn:'产生提案卡片',
  crNegNote:'<b>这条线是关键。</b>业务对 lead 的判断，会直接变成投放端的否定词。这是平台拿不到的资料。',
- cr5:'三、这一页产出的四种建议',
+ cr5:'四、这一页产出的四种建议',
  crOutTh:['建议类型','触发条件','动作','为什么平台做不到'],
  crOut:[['加码','询问成本偏高，但商机转化率与金额显著优于平均','提高出价或预算','平台不知道询问后来变成商机没有'],
   ['降级','询问成本很低，但商机转化率接近 0','降价或改素材','平台会把这种词当成明星词继续加码'],
@@ -869,8 +882,8 @@ tw:{
  sLater:'稍後處理', sLaterM:'明天再提醒一次。不影響這類建議的可信度評分。',
  sPick:'請選一個理由：', sDeclined:'已拒絕',
 
- fPeriod:'期間', fCmp:'比較基準', fPlat:'平台', fBU:'事業線', fDev:'裝置', fIntent:'意圖層級',
- oYoY:'去年同期', oNone:'不比較', oAll:'全部', oPC:'桌機', oMobile:'行動',
+ fPeriod:'期間', fCmp:'比較基準', fPlat:'平台', fBU:'事業線', fIntent:'意圖層級（未接）',
+ oYoY:'去年同期', oNone:'不比較',
  oIntent:['全部','品牌字','品類字','競品字','方案字'],
  oPlat:['百度','Google（未介接）','Microsoft（未介接）'], oBU:['EIOT','CORP（未介接）'],
  bMakeRep:'產報表', bViewOps:'查看投放操作',
@@ -957,6 +970,10 @@ tw:{
  crDaysRows:[['點擊 → 表單','2','同次或數日內'],['表單 → MQL','11','評分達標所需時間'],
   ['MQL → SQL','26','業務接手確認'],['SQL → 商機','43','需求確認與報價'],
   ['商機 → 成交','97','B2B 決策週期'],['<b>點擊 → 商機</b>','<b>82</b>','<b>評估區間至少要 3 個月</b>']],
+ crLossT:'三、商機／SQL 階段為什麼沒有成交',
+ crLossNote:'業務退件原因回答的是「為什麼沒變成商機」；這一段回答的是「<b>商機成立後，為什麼還是沒成交</b>」——目前這些原因大多只存在業務同事的記憶裡，沒有系統化記錄。系統化之後才能回答：該往哪個產品線加碼，還是該調整報價策略，而不是一律怪投放不夠精準。',
+ crLossH:'各原因佔比（示意）',
+ crLossR:['報價高於競品','客戶預算取消或遞延','技術規格不符','決策週期過長，後續未持續跟進','改選其他品牌／方案','失聯，原因不明'],
  cr3:'一、關鍵字 × 商機 —— 這裡會推翻兩個直覺',
  crKwTh:['關鍵字','花費','詢問','詢問成本','MQL','商機','商機金額','商機成本','Lead 評分','建議'],
  crAdv:['維持','加碼','降級','暫停'],
@@ -970,7 +987,7 @@ tw:{
  crNegH:'由退件原因自動產生的排除關鍵字建議',
  crNegBtn:'產生提案卡片',
  crNegNote:'<b>這條線是關鍵。</b>業務對 lead 的判斷，會直接變成投放端的排除關鍵字。這是平台拿不到的資料。',
- cr5:'三、這一頁產出的四種建議',
+ cr5:'四、這一頁產出的四種建議',
  crOutTh:['建議類型','觸發條件','動作','為什麼平台做不到'],
  crOut:[['加碼','詢問成本偏高，但商機轉換率與金額顯著優於平均','提高出價或預算','平台不知道詢問後來變成商機沒有'],
   ['降級','詢問成本很低，但商機轉換率接近 0','降價或改素材','平台會把這種關鍵字當成明星關鍵字繼續加碼'],
@@ -1029,8 +1046,8 @@ en:{
  sLater:'Deferred', sLaterM:'You’ll be reminded tomorrow. This does not affect the credibility score for this type.',
  sPick:'Pick a reason:', sDeclined:'Declined',
 
- fPeriod:'Period', fCmp:'Compare to', fPlat:'Platform', fBU:'Business unit', fDev:'Device', fIntent:'Intent tier',
- oYoY:'Same period last year', oNone:'No comparison', oAll:'All', oPC:'Desktop', oMobile:'Mobile',
+ fPeriod:'Period', fCmp:'Compare to', fPlat:'Platform', fBU:'Business unit', fIntent:'Intent tier (not wired up)',
+ oYoY:'Same period last year', oNone:'No comparison',
  oIntent:['All','Brand','Category','Competitor','Solution'],
  oPlat:['Baidu','Google (not connected)','Microsoft (not connected)'], oBU:['EIOT','CORP (not connected)'],
  bMakeRep:'Build a report', bViewOps:'View ad delivery ops',
@@ -1117,6 +1134,10 @@ en:{
  crDaysRows:[['Click → form','2','Same session or within days'],['Form → MQL','11','Time to reach the scoring threshold'],
   ['MQL → SQL','26','Sales picks it up and qualifies'],['SQL → opportunity','43','Requirements confirmed and quoted'],
   ['Opportunity → closed won','97','B2B decision cycle'],['<b>Click → opportunity</b>','<b>82</b>','<b>Evaluation window must be at least three months</b>']],
+ crLossT:'3. Why opportunities / SQLs don\'t close',
+ crLossNote:'Sales-disqualification reasons answer "why it never became an opportunity." This section answers "<b>the opportunity existed — why did it still not close?</b>" Today these reasons mostly live only in salespeople\'s memory, with no systematic record. Once recorded, this can answer which product line deserves more budget versus where the pricing strategy needs to change — instead of blaming media buying by default.',
+ crLossH:'Share by reason (illustrative)',
+ crLossR:['Price higher than competitor','Customer budget cut or delayed','Spec mismatch','Decision cycle dragged on, follow-up lapsed','Switched to another brand/solution','Went silent, reason unknown'],
  cr3:'1. Keyword × opportunity — where two instincts turn out to be wrong',
  crKwTh:['Keyword','Spend','Inquiries','Cost per inquiry','MQL','Opportunities','Pipeline value','Cost per opportunity','Lead grade','Recommendation'],
  crAdv:['Hold','Scale up','Scale back','Pause'],
@@ -1130,7 +1151,7 @@ en:{
  crNegH:'Negative keywords generated from disqualification reasons',
  crNegBtn:'Generate proposal card',
  crNegNote:'<b>This link matters.</b> A sales rep’s judgement on a lead turns directly into a negative keyword on the media side. No platform has access to this.',
- cr5:'3. The four recommendation types this page produces',
+ cr5:'4. The four recommendation types this page produces',
  crOutTh:['Type','Trigger','Action','Why platforms cannot do this'],
  crOut:[['Scale up','Cost per inquiry is high, but opportunity rate and value are well above average','Raise bids or budget','The platform does not know whether an inquiry became an opportunity'],
   ['Scale back','Cost per inquiry is low, but the opportunity rate is near zero','Lower bids or change creative','The platform treats it as a star keyword and keeps pushing budget into it'],
@@ -1431,6 +1452,7 @@ const KWO=[
 const FUNV=[1863224,28525,25100,653,214,88,41,9];
 const FUNR=[1,1,0,1,0,0,0,0];
 const REJV=[34,22,18,11,9,6];
+const LOSSV=[32,24,18,14,8,4];
 const COH=[['2025-07',3,7,11,14],['2025-08',2,6,9,13],['2025-09',4,8,12,15],['2025-10',3,6,10,12],
  ['2025-11',2,5,8,11],['2025-12',3,7,10,null],['2026-01',4,8,11,null],['2026-02',2,5,7,null],
  ['2026-03',3,6,null,null],['2026-04',2,4,null,null],['2026-05',3,null,null,null],['2026-06',1,null,null,null]];
@@ -1633,7 +1655,6 @@ function rDash(){
    <option value="none"${ST.cmp==='none'?' selected':''}>${T.oNone}</option></select></div>
   <div class="fg"><label>${T.fPlat}</label><select>${T.oPlat.map(o=>`<option>${o}</option>`).join('')}</select></div>
   <div class="fg"><label>${T.fBU}</label><select>${T.oBU.map(o=>`<option>${o}</option>`).join('')}</select></div>
-  <div class="fg"><label>${T.fDev}</label><select><option>${T.oAll}</option><option>${T.oPC}</option><option>${T.oMobile}</option></select></div>
   <div class="fg"><label>${T.fIntent}</label><select>${T.oIntent.map(o=>`<option>${o}</option>`).join('')}</select></div>
   <span style="flex:1"></span><button class="b" onclick="go('ops')">${T.bViewOps}</button><button class="b" onclick="go('rep')">${T.bMakeRep}</button>
  </div>
@@ -1891,6 +1912,13 @@ function rCrm(){
   <div class="sc" style="max-height:320px"><table><thead><tr>${T.crDaysTh.map((h,i)=>`<th class="${i===1?'n ':''}na">${h}</th>`).join('')}</tr></thead><tbody>
   ${T.crDaysRows.map((r,i)=>`<tr${i===5?' style="background:#fdf2df"':''}><td>${r[0]}</td><td class="n">${r[1]}</td><td class="mut">${r[2]}</td></tr>`).join('')}
   </tbody></table></div></div>
+ </div>
+ <h3>${T.crLossT}</h3>
+ <div class="nt">${T.crLossNote}</div>
+ <div class="box"><h4>${T.crLossH}</h4>
+  ${T.crLossR.map((nm,i)=>`<div style="display:grid;grid-template-columns:230px 1fr 40px;gap:8px;align-items:center;margin-bottom:5px;font-size:12.5px">
+   <div>${nm}</div><div style="background:#eef0f4;height:16px;border-radius:3px"><div style="width:${LOSSV[i]*2.6}%;height:16px;background:#8fa8d8;border-radius:3px"></div></div>
+   <div class="n">${LOSSV[i]}%</div></div>`).join('')}
  </div>
  <h3>${T.cr5}</h3>
  <div class="sc" style="max-height:none"><table><thead><tr>${T.crOutTh.map(h=>`<th class="na">${h}</th>`).join('')}</tr></thead><tbody>
