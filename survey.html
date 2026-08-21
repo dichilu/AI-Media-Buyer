@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="icon" href="data:image/png;base64,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">
+<title>AI 广告投手 · 投放逻辑问卷</title>
+<style>
+body{font:14px/1.75 "Microsoft YaHei","PingFang SC","Segoe UI",Arial,sans-serif;background:#f3f4f7;color:#16191d;margin:0}
+body.en{font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif}
+body.tw{font-family:"Microsoft JhengHei","PingFang TC","Segoe UI",Arial,sans-serif}
+.hd{background:#fff;color:#16191d;padding:0 18px;display:flex;align-items:center;gap:12px;min-height:58px;
+ border-bottom:1px solid #e3e6ec;position:sticky;top:0;z-index:9;flex-wrap:wrap}
+.hd img{height:30px;display:block}.hd .nm{font-weight:600;font-size:15px}.hd .sp{flex:1}
+.hd a{color:#004280;font-size:13px;text-decoration:none;border:1px solid #b9cde3;padding:4px 12px;border-radius:6px;white-space:nowrap}
+.hd a:hover{background:#eaf0fa}
+.hd select{font:inherit;font-size:12.5px;padding:5px 8px;border:1px solid #b9cde3;border-radius:6px;background:#fff;color:#004280;cursor:pointer;min-width:104px}
+.w{max-width:880px;margin:0 auto;padding:22px 22px 84px}
+.c{background:#fff;border:1px solid #e3e6ec;border-radius:10px;padding:20px 24px;margin-bottom:16px}
+h2{font-size:16px;font-weight:600;margin:0 0 3px;color:#004280}
+.intro{border-left:3px solid #004280;background:#eaf0fa;padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:18px}
+.intro p{margin:0 0 8px}.intro p:last-child{margin:0}
+.warn{border-left:3px solid #96600a;background:#fdf2df;padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:16px}
+.q{padding:14px 0;border-bottom:1px solid #eef0f4}.q:last-child{border:0;padding-bottom:0}
+.qt{font-weight:600;font-size:14px;margin-bottom:3px}
+.qt .n{color:#8a93a2;font-weight:400;margin-right:6px}
+.hint{color:#8a93a2;font-size:12.5px;margin-bottom:8px}
+.star{color:#ad3434;font-size:12px;margin-left:5px}
+input[type=text],textarea{font:inherit;font-size:13.5px;width:100%;padding:7px 10px;border:1px solid #ccd2dc;
+ border-radius:6px;background:#fff;color:#16191d;resize:vertical}
+input[type=text]:focus,textarea:focus{outline:2px solid #a9c4ee;outline-offset:-1px;border-color:#004280}
+textarea{min-height:74px;line-height:1.6}
+.opt{display:block;padding:4px 0;font-size:13.5px;color:#3a4250;cursor:pointer}
+.opt input{margin-right:7px}
+.oi{display:inline-block;width:160px;margin-left:6px;padding:3px 7px!important;font-size:13px!important}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th{text-align:left;font-size:11.5px;color:#586170;padding:6px 8px;border-bottom:1.5px solid #ccd2dc;background:#fafbfc}
+td{padding:5px 8px;border-bottom:1px solid #eef0f4;vertical-align:middle}
+td input[type=text]{padding:5px 8px;font-size:13px}
+.sm{font-size:12.5px;color:#8a93a2}
+select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid #ccd2dc;border-radius:6px;background:#fff;width:100%;max-width:200px}
+.gtab td.gq{width:42%}
+.gtab td.gq b{font-size:13.5px}
+.gtab td.gq .how{display:block;color:#8a93a2;font-size:12px;margin-top:2px}
+.gtab tr.grp td{background:#f6f8fb;font-size:12px;font-weight:600;color:#004280;padding:7px 9px;border-bottom:1px solid #e3e6ec}
+.q.err{background:#fdeeee;border-radius:8px;margin:0 -12px;padding:14px 12px;box-shadow:inset 3px 0 0 #ad3434}
+.q.err .qt{color:#ad3434}
+.reqerr{color:#ad3434;font-size:12px;margin-top:6px;display:none}
+.q.err .reqerr{display:block}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ec;padding:10px 22px;
+ display:flex;gap:10px;align-items:center;z-index:9;flex-wrap:wrap}
+.bar .sp{flex:1}
+button.b{font:inherit;font-size:13.5px;padding:7px 16px;border:1px solid #ccd2dc;border-radius:7px;background:#fff;cursor:pointer}
+button.b:hover{background:#f7f8fa}
+button.b.p{background:#004280;color:#fff;border-color:#004280}button.b.p:hover{opacity:.88}
+.done{color:#1a7a4f;font-size:13px}
+</style></head><body class="cn">
+
+<div class="hd">
+  <img src="data:image/png;base64,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" alt="Advantech">
+  <span class="nm" id="hNm"></span>
+  <span class="sp"></span>
+  <a id="lProto" href="index.html"></a>
+  <a id="lArch" href="architecture.html"></a>
+  <select id="langSel" onchange="setLang(this.value)">
+    <option value="en">English</option><option value="cn" selected>简体中文</option><option value="tw">繁體中文</option>
+  </select>
+</div>
+
+<div style="background:#fdf2df;color:#96600a;font-size:12.5px;text-align:center;padding:9px 14px;border-bottom:1px solid #e8d0a0">此為 GitHub Pages 靜態展示版，無後端可接收送出，請用「匯出並回傳」下載檔案後回傳 · This is a static GitHub Pages preview — submissions are not received. Use “Export and return” instead. · 这是 GitHub Pages 静态预览版，无法送出，请使用「汇出并回传」</div>
+<div class="w"><div id="head"></div><div id="form"></div></div>
+
+<div class="bar">
+  <span class="done" id="prog"></span>
+  <span class="done" id="subMsg"></span>
+  <span class="sp"></span>
+  <button class="b" onclick="clr()" id="bClr"></button>
+  <button class="b" onclick="exp()" id="bMd"></button>
+  <button class="b p" onclick="submitSurvey()" id="bSub"></button>
+</div>
+
+<script>
+/* ===== 管理者面板 + 問卷送出 語言包 ===== */
+const ADM = {
+cn:{
+ btn:'管理员检视', title:'管理员检视', sub:'问卷回收与使用统计',
+ enterPw:'请输入管理员密码', verifying:'验证中…', enter:'进入',
+ pwWrong:'密码错误', connFail:'连接失败（后端未启动或网络异常）', close:'关闭',
+ periods:['今日','本周','本月','全部'],
+ refresh:'重新载入', expXlsx:'汇出 Excel', expRaw:'原始备份', exporting:'产生中…',
+ tabs:['问卷统计与回馈','使用统计'],
+ sheetCross:'横向比较', sheetList:'回覆清单',
+
+ s1:'一、问卷统计与回馈',
+ k1:['已回收份数','平均完成率','最新回覆'],
+ listT:'回覆清单',
+ listTh:['送出时间','姓名','事业线','语言','完成率',''],
+ view:'看全文', hide:'收起',
+ crossT:'横向比较 —— 一题一列、一人一栏',
+ crossHint:'这是问卷真正的产出：看得出哪些判断是大家共通的（可直接变成系统规则）、哪些是个人差异（需要再讨论）。',
+ crossTh:'题目',
+ missT:'最常被跳过的题目',
+ missHint:'某一题大家都跳过，通常代表这题问错了，而不是大家都不知道答案。',
+ missTh:['题号','跳过人数'],
+ noResp:'尚无问卷回覆',
+
+ s2:'二、使用统计',
+ k2:['总事件数','不重复 Session','卡片决策数'],
+ trendT:'每日趋势（近 7 日）',
+ langT:'语言分布',
+ pageT:'各分页浏览次数',
+ decT:'卡片决策分布',
+ rsnT:'拒绝理由分布',
+ sessNote:['Session = 浏览器识别码','同一人换浏览器算两个','正式上线后改用帐号追踪'],
+ demoNote:'Demo 期间的使用纪录即为真实数据 —— 尤其「卡片决策」与「拒绝理由」，那正是系统上线后要学的东西，等于 demo 本身就在收第一批训练资料。',
+ noData:'尚无资料',
+
+ /* 问卷送出 */
+ submit:'送出并回传', submitting:'送出中…',
+ submitOK:'已回传，感谢填写', submitFail:'送出失败，请改用「汇出并回传」',
+ needName:'请先填写 A1 姓名，才能辨识是谁回覆的',
+ offlineNote:'目前为离线开启，无法直接送出。请用「汇出并回传」下载档案后回传。',
+},
+
+tw:{
+ btn:'管理者檢視', title:'管理者檢視', sub:'問卷回收與使用統計',
+ enterPw:'請輸入管理者密碼', verifying:'驗證中…', enter:'進入',
+ pwWrong:'密碼錯誤', connFail:'連線失敗（後端未啟動或網路異常）', close:'關閉',
+ periods:['今日','本週','本月','全部'],
+ refresh:'重新載入', expXlsx:'匯出 Excel', expRaw:'原始備份', exporting:'產生中…',
+ tabs:['問卷統計與回饋','使用統計'],
+ sheetCross:'橫向比較', sheetList:'回覆清單',
+
+ s1:'一、問卷統計與回饋',
+ k1:['已回收份數','平均完成率','最新回覆'],
+ listT:'回覆清單',
+ listTh:['送出時間','姓名','事業線','語言','完成率',''],
+ view:'看全文', hide:'收起',
+ crossT:'橫向比較 —— 一題一列、一人一欄',
+ crossHint:'這是問卷真正的產出：看得出哪些判斷是大家共通的（可直接變成系統規則）、哪些是個人差異（需要再討論）。',
+ crossTh:'題目',
+ missT:'最常被跳過的題目',
+ missHint:'某一題大家都跳過，通常代表這題問錯了，而不是大家都不知道答案。',
+ missTh:['題號','跳過人數'],
+ noResp:'尚無問卷回覆',
+
+ s2:'二、使用統計',
+ k2:['總事件數','不重複 Session','卡片決策數'],
+ trendT:'每日趨勢（近 7 日）',
+ langT:'語言分布',
+ pageT:'各分頁瀏覽次數',
+ decT:'卡片決策分布',
+ rsnT:'拒絕理由分布',
+ sessNote:['Session = 瀏覽器識別碼','同一人換瀏覽器算兩個','正式上線後改用帳號追蹤'],
+ demoNote:'Demo 期間的使用紀錄即為真實資料 —— 尤其「卡片決策」與「拒絕理由」，那正是系統上線後要學的東西，等於 demo 本身就在收第一批訓練資料。',
+ noData:'尚無資料',
+
+ submit:'送出並回傳', submitting:'送出中…',
+ submitOK:'已回傳，感謝填寫', submitFail:'送出失敗，請改用「匯出並回傳」',
+ needName:'請先填寫 A1 姓名，才能辨識是誰回覆的',
+ offlineNote:'目前為離線開啟，無法直接送出。請用「匯出並回傳」下載檔案後回傳。',
+},
+
+en:{
+ btn:'Admin view', title:'Admin view', sub:'Survey responses and usage',
+ enterPw:'Enter admin password', verifying:'Verifying…', enter:'Enter',
+ pwWrong:'Wrong password', connFail:'Connection failed (backend not running)', close:'Close',
+ periods:['Today','This week','This month','All'],
+ refresh:'Reload', expXlsx:'Export Excel', expRaw:'Raw backup', exporting:'Building…',
+ tabs:['Survey responses','Usage'],
+ sheetCross:'Comparison', sheetList:'Response list',
+
+ s1:'1. Survey responses and feedback',
+ k1:['Responses received','Average completion','Latest response'],
+ listT:'Response list',
+ listTh:['Submitted','Name','Business unit','Language','Completion',''],
+ view:'View', hide:'Hide',
+ crossT:'Side by side — one question per row, one person per column',
+ crossHint:'This is what the survey is really for: it shows which judgements everyone shares (those become system rules) and which differ by person (those need discussion).',
+ crossTh:'Question',
+ missT:'Most-skipped questions',
+ missHint:'When everyone skips the same question, it usually means the question was wrong — not that nobody knows the answer.',
+ missTh:['Question','Skipped by'],
+ noResp:'No responses yet',
+
+ s2:'2. Usage',
+ k2:['Total events','Unique sessions','Card decisions'],
+ trendT:'Daily trend (last 7 days)',
+ langT:'Language split',
+ pageT:'Views by tab',
+ decT:'Card decisions',
+ rsnT:'Decline reasons',
+ sessNote:['Session = browser identifier','Same person on another browser counts twice','Switches to account tracking once live'],
+ demoNote:'Usage during the demo is real data — particularly the card decisions and decline reasons, which are exactly what the system needs to learn once live. The demo is already collecting its first training set.',
+ noData:'No data',
+
+ submit:'Submit', submitting:'Submitting…',
+ submitOK:'Sent — thank you', submitFail:'Submit failed. Please use “Export and return” instead',
+ needName:'Please fill in A1 (name) first so we know whose response this is',
+ offlineNote:'Opened offline, so direct submission is unavailable. Please use “Export and return” and send the file back.',
+},
+};
+
+</script>
+<script>
+/* ===== 问卷语言包（题目 id 三语共用，切换语言不会遗失已填内容） =====
+   题型：t 单行文字／a 多行文字／r 单选／c 复选（可设 max）／m 矩阵（每格文字）
+        ／g 分组下拉矩阵（每行两个下拉：状况 + 是否要系统协助）
+   全部题目均为必填，由 _survey.html 的 isFilled()/findMissing() 统一验证。 */
+const SURVEY = {
+
+cn:{
+ title:'AI 广告投手 · 投放逻辑问卷', nm:'AI 广告投手 · 投放逻辑问卷',
+ lProto:'产品原型', lArch:'架构图',
+ introH:'这份问卷要做什么',
+ intro:['我们正在建立一套叫「AI 广告投手」的系统。它的第一版「大脑」不是靠 AI 自己学，而是靠各位现在脑子里的判断经验。这份问卷的每一个答案，都会变成系统的一条判断规则。',
+  '<b>请放心：这不是绩效考核，也不是要把各位的工作自动化掉。</b>系统不会有账户操作权，所有调整永远由各位执行。'],
+ introMeta:'填写时间约 30–35 分钟 · <b>全部题目均为必填</b> · G、H 两段建议找主管或业务一起填 · 内容会自动暂存在本机浏览器，可分次填写',
+ warn:'<b>提醒：这个开启方式无法自动暂存。</b>建议把档案下载到本机后用浏览器开启，或是<b>一次填完后立即按「汇出并回传」</b>，避免关掉视窗后内容遗失。',
+ ui:{clear:'清空重填', expTxt:'汇出文字档', expMd:'汇出并回传', star:'重点',
+  prog:(a,b)=>`已填 ${a} / ${b} 题`, confirm:'确定要清空所有已填内容？此动作无法复原。',
+  other:'请说明', unfilled:'（未填）', name:'姓名', bu:'事业线',
+  expTitle:'AI 广告投手 · 投放逻辑问卷 — 填写结果', expBy:'填写人', expBU:'事业线',
+  fileName:'投放逻辑问卷', unnamed:'未署名',
+  end:'填写完成后请回传给专案窗口。若有任何一题你觉得「这问题问错了」，请直接写在最后一题，那对我们更有价值。',
+  needAll:'请完成所有必填题目 —— 已跳到第一个尚未填写的地方'},
+ sec:[
+ {s:'A',t:'基本资料',qs:[
+  {id:'a1',ty:'t',q:'姓名'},
+  {id:'a2',ty:'c',q:'负责平台',o:['百度','Microsoft','Google','LinkedIn','Meta']},
+  {id:'a3',ty:'t',q:'负责事业线'},
+  {id:'a4',ty:'t',q:'国家／区域'}]},
+ {s:'B',t:'你现在怎么工作',qs:[
+  {id:'b1',ty:'a',q:'请描述一个典型工作日，跟广告有关的动作依序有哪些',h:'例：09:00 开后台看昨日数据 → 09:20 检查搜索词报告 → …'},
+  {id:'b2',ty:'m',q:'下列工作各佔你多少时间（百分比，总和 100%）',
+   rows:['看数据、找问题','实际调整账户（出价／否词／关键词／预算）','製作报表（含每月那份 Excel）','素材与落地页相关','开会、沟通、跨部门协调','其他'],cols:['佔比 %']},
+  {id:'b3',ty:'r',q:'那份每月的 SEM Excel 报表，大约要花多久做完',o:['半天以内','1 天','2–3 天','3 天以上']},
+  {id:'b4',ty:'a',q:'做那份报表的过程中，哪一段最花时间、最想被自动化'},
+  {id:'b5',ty:'r',q:'报表做完后，你自己会回头看它做决策吗',o:['我自己也会用它做决策','主要给主管／会议用，我平常决策靠后台','其他'],oth:1}]},
+ {s:'C',t:'你怎么判断',star:1,note:'这一段的答案会直接变成系统的判断规则，请尽量具体，能讲数字最好。',qs:[
+  {id:'c1',ty:'a',q:'每天早上打开后台，你第一个看的是什么？为什么是它'},
+  {id:'c2',ty:'m',q:'什么程度你会判断「要处理」，什么程度算「正常波动」',h:'请尽量给具体数字，例如「消费单日跌超过 30% 且连续两天」',
+   rows:['消费','曝光量','点击率','转化量','转化成本','关键词排名'],cols:['要处理的门槛','算正常波动的范围']},
+  {id:'c3',ty:'a',q:'一个关键词要符合什么条件，你才会把它暂停',h:'例：连续 N 天有花费、花费累积超过 N 元、零询问，且不是品牌词'},
+  {id:'c4',ty:'a',q:'什么情况你会提高出价？什么情况会降低'},
+  {id:'c5',ty:'a',q:'你什么时候会加否定词？加之前会先看什么'},
+  {id:'c6',ty:'m',q:'过去一年做过最有效的三个调整',h:'请说明当时看到什么数据才决定这样做',
+   rows:['调整一','调整二','调整三'],cols:['做了什么调整','当时看到什么现象','结果如何']},
+  {id:'c7',ty:'a',q:'过去一年有没有事后觉得判断错了的调整？发生什么事',h:'这题很重要 —— 错误案例对系统的价值不低于成功案例'},
+  {id:'c8',ty:'a',q:'有哪些「表面看起来是问题、其实不是问题」的情况，是新人容易误判的',h:'例：某些节日流量本来就会掉、某类词转化本来就低但要留着'}]},
+ {s:'D',t:'你怎么看平台自己给的建议',qs:[
+  {id:'d1',ty:'r',q:'百度／Google 后台的优化建议，你多久看一次',o:['每次登入都会看','偶尔看','几乎不看']},
+  {id:'d2',ty:'r',q:'那些建议你实际採纳的比例大概是',o:['超过一半','两三成','一成以下','几乎不採纳']},
+  {id:'d3',ty:'a',q:'哪一类平台建议你「一定不採纳」？为什么'},
+  {id:'d4',ty:'a',q:'平台建议要改成什么样子，你才会觉得有用'},
+  {id:'d5',ty:'m',q:'一个 AI 助理每天给你几条建议是合理的',rows:['合理的条数','超过几条会觉得烦'],cols:['条／天']}]},
+ {s:'E',t:'你的市场的特殊性',qs:[
+  {id:'e1',ty:'a',q:'有哪些事情是你的市场独有、总部或其他国家同事通常不理解的'},
+  {id:'e2',ty:'a',q:'不同广告平台在操作逻辑上，你觉得最大的差异是什么'},
+  {id:'e3',ty:'m',q:'有哪些时段／档期，数据本来就会大幅波动，不该被当成异常',
+   rows:['档期一','档期二','档期三'],cols:['时段／档期','通常会发生什么']}]},
+ {s:'F',t:'对新流程的期待与担忧',qs:[
+  {id:'f1',ty:'a',q:'如果报表能全自动生成，省下来的时间你最想拿去做什么'},
+  {id:'f2',ty:'c',q:'你最担心这套系统的哪一点（可复选）',
+   o:['它会给错误建议，害我做错决定','我的经验被记录下来，我的价值会降低','主管会拿它来检查我的工作','会增加我的工作量','它不懂当地市场，建议不实用','换了指标口径，我的绩效数字会变难看','其他'],oth:1},
+  {id:'f3',ty:'a',q:'承上题，你选的那几项，希望我们怎么处理'},
+  {id:'f4',ty:'r',q:'每天早上收到 3 张卡片、花 5–10 分钟判断，可以接受吗',o:['可以接受','可以，但希望改成每週一次','太频繁了','其他'],oth:1},
+  {id:'f5',ty:'a',q:'拒绝建议时要选一个理由，现有选项够用吗？还需要加什么',
+   h:'现有选项：数据不对／我早就做了／不符合当地市场／现在没时间／建议太笼统／不同意根因判断／风险太高'},
+  {id:'f6',ty:'a',q:'除了报表和建议，你还希望这套系统帮你做什么'}]},
+ {s:'G',t:'转换价值权重（请主管与业务窗口共同填写）',star:1,
+  note:'这一题是整个专案最重要的商业决策。目前系统把「下载一份型录」和「送出一次询问」都算成 1 次转换，导致报表上的成本无法反映真实获客成本。我们需要各位定义每种行为的相对价值，系统才知道该往哪个方向优化。',qs:[
+  {id:'g1',ty:'m',q:'以「一次有效询问 = 100 分」为基准，为其他行为评分',
+   rows:['下载一份型录／白皮书（建议 3–10）','註册会员（建议 10–20）','观看产品影片（建议 1–5）','电话进线（建议 100–150）','eStore 线上购买（视客单价）','CRM 判定为有效商机（建议 300–1000）','成交（视合约金额）'],cols:['分数','备註']},
+  {id:'g2',ty:'a',q:'一个「有效询问」的定义是什么？由谁判定'},
+  {id:'g3',ty:'r',q:'从广告点击到商机成立，平均需要多久',o:['1 週以内','1 个月','3 个月','半年以上','不确定']},
+  {id:'g4',ty:'a',q:'不同产品线的商机价值差异大吗？需要分开设定权重吗'},
+  {id:'g5',ty:'m',q:'业务把 lead 标记为无效时，目前有哪些原因选项',h:'若目前没有标准化，请写下你认为该有哪些',
+   rows:['原因一','原因二','原因三','原因四','原因五'],cols:['原因名称']},
+  {id:'g6',ty:'r',q:'换算成新口径后，帳面转化成本会明显上升（因为只计算询问，不计算下载）。这件事你希望怎么对上层沟通',
+   o:['由专案先向上说明换算原因，再上线','新旧口径并行一段时间，再逐步切换','只在内部使用新口径，对外报告维持旧口径','其他'],oth:1}]},
+ {s:'H',t:'你的业务在跟你要什么',star:1,
+  note:'左边是你的业务或主管会说的话，灰色小字才是投放端对应的实际动作。建议直接拿这张表跟业务主管一起填 —— 他看左边，你看小字，两边讲的是同一件事。',
+  qs:[
+  {id:'h1',ty:'g',q:'请针对下面每一列，选择你的状况',
+   h:'题目按四个阶段排：知名度 → 流量 → 名单 → 生意。不是只看最后有没有成交 —— 前面没人知道我们、来错人、来了不留资料，都会让最后的数字变差，但原因完全不同。',
+   qCols:['你的业务或主管常跟你说','你有这个困扰吗','要系统主动帮你吗'],
+   optsA:['常被提起，但我做不到','常被提起，我做得到','偶尔会提','没人提过','不知道这也能处理'],
+   optsB:['要，主动帮我盯','可有可无','不要'],
+   groups:[
+    {title:'① 知名度　有没有人知道我们',rows:[
+     {label:'客户根本没听过我们，竞争对手比较有名',how:'品类词与方案词曝光／竞品词／与内容和 SEO 配合／展会活动导流'},
+     {label:'搜索我们品牌名字的人变少了',how:'品牌词曝光份额监控／检查品牌词是否被竞品截流／品牌词防守'}]},
+    {title:'② 流量　有没有对的人来',rows:[
+     {label:'来的人不是我们要的客户',how:'加否定词／收窄匹配类型／排除非目标地域与产业'},
+     {label:'有需求的人根本没看到我们',how:'曝光份额不足检查／扩充关键词／高意图词提价／预算是否撞线'}]},
+    {title:'③ 名单　来了有没有留下资料',rows:[
+     {label:'人来了却不留资料',how:'落地页首屏信息／表单栏位精简／加载速度／新增联络方式'},
+     {label:'都是老客户来查资料，不是新客户',how:'排除型号、说明书、驱动这类查询词／品牌词与获客词分开评估'}]},
+    {title:'④ 生意　名单有没有变成钱',rows:[
+     {label:'只有小案子，没有大案子',how:'方案词与竞品词加码／按商机金额而非名单数配预算'},
+     {label:'花这么多钱，到底有没有变成订单',how:'串接 CRM 商机／转化去重／依意图分层评估／设定合理评估窗口'}]}]},
+  {id:'h2',ty:'c',max:3,q:'上面八项里，你的业务或主管最常要求的前三名？',h:'限选 3 项。各国答案可能不同，那本身就是重要信息。',
+   o:['客户根本没听过我们，竞争对手比较有名','搜索我们品牌名字的人变少了','来的人不是我们要的客户','有需求的人根本没看到我们',
+      '人来了却不留资料','都是老客户来查资料，不是新客户','只有小案子，没有大案子','花这么多钱，到底有没有变成订单']},
+  {id:'h3',ty:'a',q:'你目前的广告，四个阶段里最弱的是哪一个？为什么？',
+   h:'知名度／流量／名单／生意。这题会看出各市场偏重的阶段不同 —— 有些帐户只做防守没有进攻，有些相反，那是分工的结果也没关系，重点是看清楚现状。'},
+  {id:'h4',ty:'a',q:'你的业务主管最常问你哪个问题？你目前答得出来吗？',h:'这题会决定报表第一页该放什么。'},
+  {id:'h5',ty:'a',q:'除了上面列的八项，还漏了什么？'}]},
+ {s:'I',t:'最后',qs:[
+  {id:'i1',ty:'a',q:'这份问卷有没有哪一题你觉得「问错了」或「这样问不对」',h:'这题的答案对我们最有价值'}]}]},
+
+tw:{
+ title:'AI 廣告投手 · 投放邏輯問卷', nm:'AI 廣告投手 · 投放邏輯問卷',
+ lProto:'產品原型', lArch:'架構圖',
+ introH:'這份問卷要做什麼',
+ intro:['我們正在建立一套叫「AI 廣告投手」的系統。它的第一版「大腦」不是靠 AI 自己學，而是靠各位現在腦子裡的判斷經驗。這份問卷的每一個答案，都會變成系統的一條判斷規則。',
+  '<b>請放心：這不是績效考核，也不是要把各位的工作自動化掉。</b>系統不會有帳戶操作權，所有調整永遠由各位執行。'],
+ introMeta:'填寫時間約 30–35 分鐘 · <b>全部題目均為必填</b> · G、H 兩段建議找主管或業務一起填 · 內容會自動暫存在本機瀏覽器，可分次填寫',
+ warn:'<b>提醒：這個開啟方式無法自動暫存。</b>建議把檔案下載到本機後用瀏覽器開啟，或是<b>一次填完後立即按「匯出並回傳」</b>，避免關掉視窗後內容遺失。',
+ ui:{clear:'清空重填', expTxt:'匯出文字檔', expMd:'匯出並回傳', star:'重點',
+  prog:(a,b)=>`已填 ${a} / ${b} 題`, confirm:'確定要清空所有已填內容？此動作無法復原。',
+  other:'請說明', unfilled:'（未填）', name:'姓名', bu:'事業線',
+  expTitle:'AI 廣告投手 · 投放邏輯問卷 — 填寫結果', expBy:'填寫人', expBU:'事業線',
+  fileName:'投放邏輯問卷', unnamed:'未署名',
+  end:'填寫完成後請回傳給專案窗口。若有任何一題你覺得「這問題問錯了」，請直接寫在最後一題，那對我們更有價值。',
+  needAll:'請完成所有必填題目 —— 已跳到第一個尚未填寫的地方'},
+ sec:[
+ {s:'A',t:'基本資料',qs:[
+  {id:'a1',ty:'t',q:'姓名'},
+  {id:'a2',ty:'c',q:'負責平台',o:['百度','Microsoft','Google','LinkedIn','Meta']},
+  {id:'a3',ty:'t',q:'負責事業線'},
+  {id:'a4',ty:'t',q:'國家／區域'}]},
+ {s:'B',t:'你現在怎麼工作',qs:[
+  {id:'b1',ty:'a',q:'請描述一個典型工作日，跟廣告有關的動作依序有哪些',h:'例：09:00 開後台看昨日資料 → 09:20 檢查搜尋字詞報表 → …'},
+  {id:'b2',ty:'m',q:'下列工作各佔你多少時間（百分比，總和 100%）',
+   rows:['看資料、找問題','實際調整帳戶（出價／排除關鍵字／關鍵字／預算）','製作報表（含每月那份 Excel）','素材與到達網頁相關','開會、溝通、跨部門協調','其他'],cols:['佔比 %']},
+  {id:'b3',ty:'r',q:'那份每月的 SEM Excel 報表，大約要花多久做完',o:['半天以內','1 天','2–3 天','3 天以上']},
+  {id:'b4',ty:'a',q:'做那份報表的過程中，哪一段最花時間、最想被自動化'},
+  {id:'b5',ty:'r',q:'報表做完後，你自己會回頭看它做決策嗎',o:['我自己也會用它做決策','主要給主管／會議用，我平常決策靠後台','其他'],oth:1}]},
+ {s:'C',t:'你怎麼判斷',star:1,note:'這一段的答案會直接變成系統的判斷規則，請盡量具體，能講數字最好。',qs:[
+  {id:'c1',ty:'a',q:'每天早上打開後台，你第一個看的是什麼？為什麼是它'},
+  {id:'c2',ty:'m',q:'什麼程度你會判斷「要處理」，什麼程度算「正常波動」',h:'請盡量給具體數字，例如「花費單日跌超過 30% 且連續兩天」',
+   rows:['花費','曝光量','點閱率','轉換量','轉換成本','關鍵字排名'],cols:['要處理的門檻','算正常波動的範圍']},
+  {id:'c3',ty:'a',q:'一個關鍵字要符合什麼條件，你才會把它暫停',h:'例：連續 N 天有花費、花費累積超過 N 元、零詢問，且不是品牌字'},
+  {id:'c4',ty:'a',q:'什麼情況你會提高出價？什麼情況會降低'},
+  {id:'c5',ty:'a',q:'你什麼時候會加排除關鍵字？加之前會先看什麼'},
+  {id:'c6',ty:'m',q:'過去一年做過最有效的三個調整',h:'請說明當時看到什麼資料才決定這樣做',
+   rows:['調整一','調整二','調整三'],cols:['做了什麼調整','當時看到什麼現象','結果如何']},
+  {id:'c7',ty:'a',q:'過去一年有沒有事後覺得判斷錯了的調整？發生什麼事',h:'這題很重要 —— 錯誤案例對系統的價值不低於成功案例'},
+  {id:'c8',ty:'a',q:'有哪些「表面看起來是問題、其實不是問題」的情況，是新人容易誤判的',h:'例：某些節日流量本來就會掉、某類關鍵字轉換本來就低但要留著'}]},
+ {s:'D',t:'你怎麼看平台自己給的建議',qs:[
+  {id:'d1',ty:'r',q:'百度／Google 後台的最佳化建議，你多久看一次',o:['每次登入都會看','偶爾看','幾乎不看']},
+  {id:'d2',ty:'r',q:'那些建議你實際採納的比例大概是',o:['超過一半','兩三成','一成以下','幾乎不採納']},
+  {id:'d3',ty:'a',q:'哪一類平台建議你「一定不採納」？為什麼'},
+  {id:'d4',ty:'a',q:'平台建議要改成什麼樣子，你才會覺得有用'},
+  {id:'d5',ty:'m',q:'一個 AI 助理每天給你幾條建議是合理的',rows:['合理的條數','超過幾條會覺得煩'],cols:['條／天']}]},
+ {s:'E',t:'你的市場的特殊性',qs:[
+  {id:'e1',ty:'a',q:'有哪些事情是你的市場獨有、總部或其他國家同事通常不理解的'},
+  {id:'e2',ty:'a',q:'不同廣告平台在操作邏輯上，你覺得最大的差異是什麼'},
+  {id:'e3',ty:'m',q:'有哪些時段／檔期，資料本來就會大幅波動，不該被當成異常',
+   rows:['檔期一','檔期二','檔期三'],cols:['時段／檔期','通常會發生什麼']}]},
+ {s:'F',t:'對新流程的期待與擔憂',qs:[
+  {id:'f1',ty:'a',q:'如果報表能全自動生成，省下來的時間你最想拿去做什麼'},
+  {id:'f2',ty:'c',q:'你最擔心這套系統的哪一點（可複選）',
+   o:['它會給錯誤建議，害我做錯決定','我的經驗被記錄下來，我的價值會降低','主管會拿它來檢查我的工作','會增加我的工作量','它不懂當地市場，建議不實用','換了指標口徑，我的績效數字會變難看','其他'],oth:1},
+  {id:'f3',ty:'a',q:'承上題，你選的那幾項，希望我們怎麼處理'},
+  {id:'f4',ty:'r',q:'每天早上收到 3 張卡片、花 5–10 分鐘判斷，可以接受嗎',o:['可以接受','可以，但希望改成每週一次','太頻繁了','其他'],oth:1},
+  {id:'f5',ty:'a',q:'拒絕建議時要選一個理由，現有選項夠用嗎？還需要加什麼',
+   h:'現有選項：資料不對／我早就做了／不符合當地市場／現在沒時間／建議太籠統／不同意根因判斷／風險太高'},
+  {id:'f6',ty:'a',q:'除了報表和建議，你還希望這套系統幫你做什麼'}]},
+ {s:'G',t:'轉換價值權重（請主管與業務窗口共同填寫）',star:1,
+  note:'這一題是整個專案最重要的商業決策。目前系統把「下載一份型錄」和「送出一次詢問」都算成 1 次轉換，導致報表上的成本無法反映真實獲客成本。我們需要各位定義每種行為的相對價值，系統才知道該往哪個方向最佳化。',qs:[
+  {id:'g1',ty:'m',q:'以「一次有效詢問 = 100 分」為基準，為其他行為評分',
+   rows:['下載一份型錄／白皮書（建議 3–10）','註冊會員（建議 10–20）','觀看產品影片（建議 1–5）','電話進線（建議 100–150）','eStore 線上購買（視客單價）','CRM 判定為有效商機（建議 300–1000）','成交（視合約金額）'],cols:['分數','備註']},
+  {id:'g2',ty:'a',q:'一個「有效詢問」的定義是什麼？由誰判定'},
+  {id:'g3',ty:'r',q:'從廣告點擊到商機成立，平均需要多久',o:['1 週以內','1 個月','3 個月','半年以上','不確定']},
+  {id:'g4',ty:'a',q:'不同產品線的商機價值差異大嗎？需要分開設定權重嗎'},
+  {id:'g5',ty:'m',q:'業務把 lead 標記為無效時，目前有哪些原因選項',h:'若目前沒有標準化，請寫下你認為該有哪些',
+   rows:['原因一','原因二','原因三','原因四','原因五'],cols:['原因名稱']},
+  {id:'g6',ty:'r',q:'換算成新口徑後，帳面轉換成本會明顯上升（因為只計算詢問，不計算下載）。這件事你希望怎麼對上層溝通',
+   o:['由專案先向上說明換算原因，再上線','新舊口徑並行一段時間，再逐步切換','只在內部使用新口徑，對外報告維持舊口徑','其他'],oth:1}]},
+ {s:'H',t:'你的業務在跟你要什麼',star:1,
+  note:'左邊是你的業務或主管會說的話，灰色小字才是投放端對應的實際動作。建議直接拿這張表跟業務主管一起填 —— 他看左邊，你看小字，兩邊講的是同一件事。',
+  qs:[
+  {id:'h1',ty:'g',q:'請針對下面每一列，選擇你的狀況',
+   h:'題目按四個階段排：知名度 → 流量 → 名單 → 生意。不是只看最後有沒有成交 —— 前面沒人知道我們、來錯人、來了不留資料，都會讓最後的數字變差，但原因完全不同。',
+   qCols:['你的業務或主管常跟你說','你有這個困擾嗎','要系統主動幫你嗎'],
+   optsA:['常被念，但我做不到','常被念，我做得到','偶爾會提','沒人提過','不知道這也能處理'],
+   optsB:['要，主動幫我盯','可有可無','不要'],
+   groups:[
+    {title:'① 知名度　有沒有人知道我們',rows:[
+     {label:'客戶根本沒聽過我們，競爭對手比較有名',how:'品類詞與方案詞曝光／競品詞／與內容和 SEO 配合／展會活動導流'},
+     {label:'搜尋我們品牌名字的人變少了',how:'品牌詞曝光份額監控／檢查品牌詞是否被競品截流／品牌詞防守'}]},
+    {title:'② 流量　有沒有對的人來',rows:[
+     {label:'來的人不是我們要的客戶',how:'加排除關鍵字／收窄比對類型／排除非目標地域與產業'},
+     {label:'有需求的人根本沒看到我們',how:'曝光份額不足檢查／擴充關鍵字／高意圖詞提價／預算是否撞線'}]},
+    {title:'③ 名單　來了有沒有留下資料',rows:[
+     {label:'人來了卻不留資料',how:'落地頁首屏訊息／表單欄位精簡／載入速度／新增聯絡方式'},
+     {label:'都是既有客戶來查資料，不是新客戶',how:'排除型號、說明書、驅動這類查詢字詞／品牌詞與獲客詞分開評估'}]},
+    {title:'④ 生意　名單有沒有變成錢',rows:[
+     {label:'只有小案子，沒有大案子',how:'方案詞與競品詞加碼／按商機金額而非名單數配預算'},
+     {label:'花這麼多錢，到底有沒有變成訂單',how:'串接 CRM 商機／轉換去重／依意圖分層評估／設定合理評估窗口'}]}]},
+  {id:'h2',ty:'c',max:3,q:'上面八項裡，你的業務或主管最常要求的前三名？',h:'限選 3 項。各國答案可能不同，那本身就是重要資訊。',
+   o:['客戶根本沒聽過我們，競爭對手比較有名','搜尋我們品牌名字的人變少了','來的人不是我們要的客戶','有需求的人根本沒看到我們',
+      '人來了卻不留資料','都是既有客戶來查資料，不是新客戶','只有小案子，沒有大案子','花這麼多錢，到底有沒有變成訂單']},
+  {id:'h3',ty:'a',q:'你目前的廣告，四個階段裡最弱的是哪一個？為什麼？',
+   h:'知名度／流量／名單／生意。這題會看出各市場偏重的階段不同 —— 有些帳戶只做防守沒有進攻，有些相反，那是分工的結果也沒關係，重點是看清楚現狀。'},
+  {id:'h4',ty:'a',q:'你的業務主管最常問你哪個問題？你目前答得出來嗎？',h:'這題會決定報表第一頁該放什麼。'},
+  {id:'h5',ty:'a',q:'除了上面列的八項，還漏了什麼？'}]},
+ {s:'I',t:'最後',qs:[
+  {id:'i1',ty:'a',q:'這份問卷有沒有哪一題你覺得「問錯了」或「這樣問不對」',h:'這題的答案對我們最有價值'}]}]},
+
+en:{
+ title:'AI Media Buyer · Media-buying logic survey', nm:'AI Media Buyer · Media-buying logic survey',
+ lProto:'Prototype', lArch:'Architecture',
+ introH:'What this survey is for',
+ intro:['We are building a system called AI Media Buyer. Its first working brain will not come from the AI teaching itself — it comes from the judgement you already carry in your head. Every answer here becomes a rule the system uses.',
+  '<b>To be clear: this is not a performance review, and it is not a plan to automate your job away.</b> The system will have no permission to touch the accounts. Every change is still made by you.'],
+ introMeta:'About 30–35 minutes · <b>every question is required</b> · sections G and H are best filled with your manager or sales contact · answers are saved in your browser, so you can stop and come back',
+ warn:'<b>Heads up: autosave is not available the way this file was opened.</b> Download it and open it in a browser, or <b>finish in one sitting and click “Export and return” straight away</b> so nothing is lost when you close the window.',
+ ui:{clear:'Clear all', expTxt:'Export text', expMd:'Export and return', star:'key section',
+  prog:(a,b)=>`${a} of ${b} answered`, confirm:'Clear every answer? This cannot be undone.',
+  other:'please specify', unfilled:'(not answered)', name:'Name', bu:'Business unit',
+  expTitle:'AI Media Buyer · Media-buying logic survey — responses', expBy:'Respondent', expBU:'Business unit',
+  fileName:'media_buying_logic_survey', unnamed:'unnamed',
+  end:'When you are done, send the file back to the project contact. If any question strikes you as the wrong question to ask, say so in the last one — that is more useful to us than a polite answer.',
+  needAll:'Please complete every required question — jumped to the first one still blank'},
+ sec:[
+ {s:'A',t:'About you',qs:[
+  {id:'a1',ty:'t',q:'Name'},
+  {id:'a2',ty:'c',q:'Platforms you run',o:['Baidu','Microsoft','Google','LinkedIn','Meta']},
+  {id:'a3',ty:'t',q:'Business unit'},
+  {id:'a4',ty:'t',q:'Country / region'}]},
+ {s:'B',t:'How you work today',qs:[
+  {id:'b1',ty:'a',q:'Walk us through a typical day — what you do, in order',h:'e.g. 09:00 open the platform and check yesterday → 09:20 review the search terms report → …'},
+  {id:'b2',ty:'m',q:'Roughly how is your time split? (percentages, totalling 100)',
+   rows:['Reading data, looking for problems','Actually changing the account (bids, negatives, keywords, budget)','Building reports, including the monthly Excel','Creative and landing pages','Meetings, communication, coordinating with other teams','Other'],cols:['% of time']},
+  {id:'b3',ty:'r',q:'How long does the monthly SEM Excel take you?',o:['Under half a day','About a day','Two to three days','More than three days']},
+  {id:'b4',ty:'a',q:'Which part of building that report eats the most time and most deserves to be automated?'},
+  {id:'b5',ty:'r',q:'Once the report is done, do you use it yourself to make decisions?',o:['Yes, I use it for decisions too','Mostly for managers and meetings — day to day I work in the platform','Other'],oth:1}]},
+ {s:'C',t:'How you decide',star:1,note:'The answers here turn directly into the rules the system uses. Be as specific as you can, and give numbers wherever you have them.',qs:[
+  {id:'c1',ty:'a',q:'What is the first thing you look at each morning, and why that?'},
+  {id:'c2',ty:'m',q:'What size of movement makes you act, and what counts as normal noise?',h:'Numbers help — e.g. “spend down more than 30% in a day, two days running”',
+   rows:['Spend','Impressions','Click-through rate','Conversions','Cost per conversion','Keyword position'],cols:['Threshold to act','Range that is just noise']},
+  {id:'c3',ty:'a',q:'What has to be true before you pause a keyword?',h:'e.g. spending for N consecutive days, more than ¥N cumulative, zero inquiries, and not a brand term'},
+  {id:'c4',ty:'a',q:'When do you raise a bid? When do you lower one?'},
+  {id:'c5',ty:'a',q:'When do you add negative keywords, and what do you check first?'},
+  {id:'c6',ty:'m',q:'The three most effective changes you made in the last year',h:'Tell us what you saw in the data that made you decide',
+   rows:['Change 1','Change 2','Change 3'],cols:['What you changed','What you saw at the time','What happened']},
+  {id:'c7',ty:'a',q:'Any change from the last year you later decided was wrong? What happened?',h:'This one matters — a mistake teaches the system as much as a success'},
+  {id:'c8',ty:'a',q:'What looks like a problem but is not? The traps a new person falls into',h:'e.g. traffic always dips around certain holidays; some keyword types convert poorly by nature but are worth keeping'}]},
+ {s:'D',t:'What you make of the platforms’ own advice',qs:[
+  {id:'d1',ty:'r',q:'How often do you read the recommendations in Baidu or Google Ads?',o:['Every time I log in','Occasionally','Almost never']},
+  {id:'d2',ty:'r',q:'What share of them do you actually act on?',o:['More than half','Twenty to thirty percent','Under ten percent','Almost none']},
+  {id:'d3',ty:'a',q:'Which kind of platform recommendation do you never accept, and why?'},
+  {id:'d4',ty:'a',q:'What would a platform recommendation have to look like for you to find it useful?'},
+  {id:'d5',ty:'m',q:'How many recommendations a day is reasonable from an AI assistant?',rows:['Reasonable number','Point at which it becomes annoying'],cols:['per day']}]},
+ {s:'E',t:'What is different about your market',qs:[
+  {id:'e1',ty:'a',q:'What is true in your market that headquarters or colleagues elsewhere usually do not understand?'},
+  {id:'e2',ty:'a',q:'What is the biggest operational difference you have noticed between platforms?'},
+  {id:'e3',ty:'m',q:'Which periods swing wildly by nature and should never trigger an alert?',
+   rows:['Period 1','Period 2','Period 3'],cols:['Period','What usually happens']}]},
+ {s:'F',t:'Hopes and concerns about the new way of working',qs:[
+  {id:'f1',ty:'a',q:'If reports built themselves, what would you spend the reclaimed time on?'},
+  {id:'f2',ty:'c',q:'What worries you most about this system? (choose any)',
+   o:['It gives me a bad recommendation and I act on it','My experience gets recorded and I become less valuable','My manager uses it to check up on me','It adds to my workload','It does not understand my market and the advice is useless','The metric changes and my numbers look worse','Other'],oth:1},
+  {id:'f3',ty:'a',q:'For whichever you picked — how would you like us to handle it?'},
+  {id:'f4',ty:'r',q:'Three cards each morning, five to ten minutes to decide. Acceptable?',o:['Yes, that works','Yes, but weekly would suit me better','Too often','Other'],oth:1},
+  {id:'f5',ty:'a',q:'Declining a card requires picking a reason. Are the current options enough? What is missing?',
+   h:'Current options: the data is wrong / already done it / does not fit the local market / no time right now / too vague / disagree with the diagnosis / too risky'},
+  {id:'f6',ty:'a',q:'Beyond reports and recommendations, what else would you want this system to do?'}]},
+ {s:'G',t:'Conversion value weights (managers and the sales contact together)',star:1,
+  note:'This is the single most important commercial decision in the project. Today a catalogue download and a genuine inquiry both count as one conversion, which is why the cost figures in the report do not reflect what a customer really costs to acquire. We need you to set the relative value of each action so the system knows what to optimise towards.',qs:[
+  {id:'g1',ty:'m',q:'Taking one qualified inquiry as 100 points, score the rest',
+   rows:['Catalogue or whitepaper download (suggest 3–10)','Account registration (suggest 10–20)','Product video view (suggest 1–5)','Inbound phone call (suggest 100–150)','eStore purchase (depends on order value)','Qualified opportunity in CRM (suggest 300–1000)','Closed won (depends on contract value)'],cols:['Score','Notes']},
+  {id:'g2',ty:'a',q:'What makes an inquiry “qualified”, and who decides?'},
+  {id:'g3',ty:'r',q:'On average, how long from ad click to a live opportunity?',o:['Within a week','About a month','About three months','Six months or more','Not sure']},
+  {id:'g4',ty:'a',q:'Does opportunity value differ much between product lines? Should each be weighted separately?'},
+  {id:'g5',ty:'m',q:'When sales marks a lead invalid, what reasons can they choose from today?',h:'If there is no standard list yet, write down the ones you think there should be',
+   rows:['Reason 1','Reason 2','Reason 3','Reason 4','Reason 5'],cols:['Reason']},
+  {id:'g6',ty:'r',q:'Under the new definition, reported cost per conversion will rise noticeably, because only inquiries count. How should that be communicated upward?',
+   o:['The project explains the change to leadership before go-live','Run both definitions side by side for a while, then switch','Use the new definition internally and keep the old one for external reporting','Other'],oth:1}]},
+ {s:'H',t:'What your sales side is asking for',star:1,
+  note:'The left column is what your sales side or manager actually says — not marketing jargon. The grey note underneath is the matching action on the media-buying side. Consider filling this out together with your sales contact or manager — they read the left column, you read the small print, and you are both talking about the same thing.',
+  qs:[
+  {id:'h1',ty:'g',q:'For each row below, choose your situation',
+   h:'The rows follow four stages: awareness → traffic → leads → revenue. It is not only about whether deals close at the end — nobody knowing us, the wrong people showing up, or visitors not leaving details all hurt the final number, each for a different reason.',
+   qCols:['What your sales side or manager says','Is this a problem for you','Do you want the system to flag it'],
+   optsA:['Often raised, and I cannot act on it','Often raised, and I already can','Occasionally mentioned','Never mentioned','Did not know this was possible'],
+   optsB:['Yes — flag it for me proactively','Nice to have','No'],
+   groups:[
+    {title:'① Awareness — do people know us',rows:[
+     {label:'Prospects have not heard of us; competitors are better known',how:'Category and solution keyword impressions／competitor keywords／align with content and SEO／trade-show follow-up'},
+     {label:'Fewer people are searching our brand name',how:'Monitor brand impression share／check whether competitors are hijacking brand terms／brand defence'}]},
+    {title:'② Traffic — are the right people coming',rows:[
+     {label:'The people who click are not who we want',how:'Add negative keywords／narrow match types／exclude off-target geography and industries'},
+     {label:'People with real demand never see us',how:'Check impression share／expand keywords／raise bids on high-intent terms／check budget caps'}]},
+    {title:'③ Leads — do visitors leave their details',rows:[
+     {label:'People arrive but never leave their details',how:'Landing page above-the-fold message／shorter form fields／page speed／add contact options'},
+     {label:'It is all existing customers looking things up, not new ones',how:'Exclude part-number, manual, driver-style queries／score brand and acquisition keywords separately'}]},
+    {title:'④ Revenue — do leads turn into money',rows:[
+     {label:'Only small deals, never the big ones',how:'Bid up solution and competitor keywords／allocate budget by pipeline value, not lead count'},
+     {label:'We spend all this money — does any of it become an order',how:'Connect to CRM pipeline／de-duplicate conversions／score by intent tier／set a realistic attribution window'}]}]},
+  {id:'h2',ty:'c',max:3,q:'Of the eight above, which three does your sales side or manager ask for most?',h:'Choose up to 3. Answers may differ by country — that itself is useful information.',
+   o:['Prospects have not heard of us; competitors are better known','Fewer people are searching our brand name','The people who click are not who we want','People with real demand never see us',
+      'People arrive but never leave their details','It is all existing customers looking things up, not new ones','Only small deals, never the big ones','We spend all this money — does any of it become an order']},
+  {id:'h3',ty:'a',q:'Of the four stages, which is weakest in your account today, and why?',
+   h:'Awareness／traffic／leads／revenue. This shows which stage each market leans on — some accounts play pure defence with no offence, others the reverse. If that is simply how the work is divided, that is fine — the point is to see the current state clearly.'},
+  {id:'h4',ty:'a',q:'What question does your sales manager ask you most often? Can you answer it today?',h:'This decides what belongs on page one of the report.'},
+  {id:'h5',ty:'a',q:'Beyond the eight above, what is missing?'}]},
+ {s:'I',t:'Last thing',qs:[
+  {id:'i1',ty:'a',q:'Is there a question here you think we got wrong, or asked the wrong way?',h:'This is the answer we value most'}]}]},
+};
+
+</script>
+<script>
+let LANG='cn',S=SURVEY.cn;
+const K='adv_sem_survey_v2';
+let LS=null;
+try{localStorage.setItem('__t','1');localStorage.removeItem('__t');LS=localStorage}catch(e){LS=null}
+let A={};
+try{A=JSON.parse((LS&&LS.getItem(K))||'{}')||{}}catch(e){A={}}
+function sv(){try{if(LS)LS.setItem(K,JSON.stringify(A))}catch(e){}prog()}
+
+function allQ(){return S.sec.flatMap(x=>x.qs)}
+function prog(){
+ let tot=0,fil=0;
+ allQ().forEach(q=>{tot++;const v=A[q.id];
+  if(v&&(typeof v==='string'?v.trim():Object.values(v).some(x=>x&&String(x).trim())))fil++});
+ document.getElementById('prog').textContent=S.ui.prog(fil,tot)}
+
+function esc(s){return String(s).replace(/"/g,'&quot;')}
+function render(){
+ document.title=S.title;
+ document.getElementById('hNm').textContent=S.nm;
+ const p=document.getElementById('lProto'),a=document.getElementById('lArch');
+ p.textContent=S.lProto;p.href='index.html?lang='+LANG;
+ a.textContent=S.lArch;a.href='architecture.html?lang='+LANG;
+ document.getElementById('bClr').textContent=S.ui.clear;
+ document.getElementById('bMd').textContent=S.ui.expMd;
+ document.getElementById('bSub').textContent=AD().submit;
+
+ document.getElementById('head').innerHTML=
+  `<div class="intro"><p><b>${S.introH}</b></p>${S.intro.map(x=>`<p>${x}</p>`).join('')}
+   <p class="sm">${S.introMeta}</p></div>`+(LS?'':`<div class="warn">${S.warn}</div>`);
+
+ document.getElementById('form').innerHTML=S.sec.map(sec=>`<div class="c">
+  <h2>${sec.s}｜${sec.t}${sec.star?`<span class="star">${S.ui.star}</span>`:''}</h2>
+  ${sec.note?`<p class="hint" style="margin-bottom:10px">${sec.note}</p>`:'<div style="height:6px"></div>'}
+  ${sec.qs.map((q,i)=>{
+   const n=`${sec.s}${i+1}`;let body='';
+   if(q.ty==='t')body=`<input type="text" value="${esc(A[q.id]||'')}" oninput="A['${q.id}']=this.value;sv()">`;
+   if(q.ty==='a')body=`<textarea oninput="A['${q.id}']=this.value;sv()">${A[q.id]||''}</textarea>`;
+   if(q.ty==='r')body=q.o.map((o,oi)=>`<label class="opt"><input type="radio" name="${q.id}" ${A[q.id]===String(oi)?'checked':''} onchange="A['${q.id}']='${oi}';sv()">${o}${q.oth&&oi===q.o.length-1?`<input type="text" class="oi" placeholder="${S.ui.other}" value="${esc(A[q.id+'_o']||'')}" oninput="A['${q.id}_o']=this.value;sv()">`:''}</label>`).join('');
+   if(q.ty==='c')body=q.o.map((o,oi)=>`<label class="opt"><input type="checkbox" ${((A[q.id]||'').split('|')).includes(String(oi))?'checked':''} onchange="tgc(this,'${q.id}','${oi}',${q.max||0})">${o}${q.oth&&oi===q.o.length-1?`<input type="text" class="oi" placeholder="${S.ui.other}" value="${esc(A[q.id+'_o']||'')}" oninput="A['${q.id}_o']=this.value;sv()">`:''}</label>`).join('');
+   if(q.ty==='m'){A[q.id]=A[q.id]||{};
+    body=`<table><thead><tr><th></th>${q.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>
+     ${q.rows.map((r,ri)=>`<tr><td style="width:38%">${r}</td>${q.cols.map((c,ci)=>{
+      const kk=ri+'_'+ci;return `<td><input type="text" value="${esc((A[q.id]||{})[kk]||'')}" oninput="mset('${q.id}','${kk}',this.value)"></td>`}).join('')}</tr>`).join('')}
+    </tbody></table>`}
+   if(q.ty==='g'){A[q.id]=A[q.id]||{};
+    let ri=0,rows='';
+    q.groups.forEach(grp=>{
+     rows+=`<tr class="grp"><td colspan="3">${grp.title}</td></tr>`;
+     grp.rows.forEach(r=>{
+      const idx=ri++,va=(A[q.id]||{})[idx+'_a'],vb=(A[q.id]||{})[idx+'_b'];
+      rows+=`<tr><td class="gq"><b>${r.label}</b><span class="how">${r.how}</span></td>
+       <td><select onchange="gset('${q.id}',${idx},'a',this.value)"><option value=""></option>${
+        q.optsA.map((o,oi)=>`<option value="${oi}" ${String(oi)===String(va)?'selected':''}>${o}</option>`).join('')}</select></td>
+       <td><select onchange="gset('${q.id}',${idx},'b',this.value)"><option value=""></option>${
+        q.optsB.map((o,oi)=>`<option value="${oi}" ${String(oi)===String(vb)?'selected':''}>${o}</option>`).join('')}</select></td></tr>`});
+    });
+    body=`<table class="gtab"><thead><tr>${q.qCols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`}
+   return `<div class="q" id="q-${q.id}"><div class="qt"><span class="n">${n}</span>${q.q}</div>
+    ${q.h?`<div class="hint">${q.h}</div>`:''}${body}<div class="reqerr">${S.ui.needAll}</div></div>`}).join('')}
+ </div>`).join('')+`<p class="sm" style="padding:0 4px">${S.ui.end}</p>`;
+ prog()}
+
+function tgc(el,id,oi,max){
+ const cur=(A[id]||'').split('|').filter(x=>x!=='');
+ const i=cur.indexOf(oi);
+ if(i<0){
+  if(max&&cur.length>=max){el.checked=false;return}
+  cur.push(oi);
+ } else cur.splice(i,1);
+ A[id]=cur.join('|');sv()}
+function mset(id,k,v){A[id]=A[id]||{};A[id][k]=v;sv()}
+function gset(id,idx,which,v){A[id]=A[id]||{};A[id][idx+'_'+which]=v;sv()}
+function clr(){if(confirm(S.ui.confirm)){A={};try{if(LS)LS.removeItem(K)}catch(e){}render()}}
+
+/* ── 必填驗證：全部題目都要填，送出前擋下並跳到第一個未填處 ── */
+function isFilled(q){
+ const v=A[q.id];
+ if(q.ty==='m'){
+  if(!v)return false;
+  return q.rows.every((r,ri)=>q.cols.every((c,ci)=>String(v[ri+'_'+ci]||'').trim()!==''));
+ }
+ if(q.ty==='g'){
+  if(!v)return false;
+  let ri=0;
+  return q.groups.every(grp=>grp.rows.every(()=>{
+   const idx=ri++,va=v[idx+'_a'],vb=v[idx+'_b'];
+   return va!==undefined&&va!==''&&vb!==undefined&&vb!=='';
+  }));
+ }
+ if(q.ty==='r')return v!==undefined&&v!=='';
+ if(q.ty==='c'){const arr=(v||'').split('|').filter(x=>x!=='');return arr.length>0}
+ return typeof v==='string'&&v.trim()!=='';}
+
+function findMissing(){
+ for(const sec of S.sec)for(const q of sec.qs)if(!isFilled(q))return q;
+ return null}
+
+function goToMissing(q){
+ document.querySelectorAll('.q.err').forEach(e=>e.classList.remove('err'));
+ const el=document.getElementById('q-'+q.id);
+ if(el){el.classList.add('err');el.scrollIntoView({behavior:'smooth',block:'center'})}}
+
+function exp(){
+ const o=[`# ${S.ui.expTitle}`,'',
+  `${S.ui.expBy}: ${A.a1||S.ui.unfilled}`,`${S.ui.expBU}: ${A.a3||S.ui.unfilled}`,''];
+ S.sec.forEach(sec=>{o.push('',`## ${sec.s}｜${sec.t}`,'');
+  sec.qs.forEach((q,i)=>{o.push(`**${sec.s}${i+1}. ${q.q}**`);
+   const v=A[q.id];
+   if(q.ty==='m'){const m=v||{};
+    o.push('','| | '+q.cols.join(' | ')+' |','|---|'+q.cols.map(()=>'---|').join(''));
+    q.rows.forEach((r,ri)=>o.push('| '+r+' | '+q.cols.map((c,ci)=>(m[ri+'_'+ci]||'')).join(' | ')+' |'))}
+   else if(q.ty==='g'){const m=v||{};
+    o.push('','| | '+q.qCols[1]+' | '+q.qCols[2]+' |','|---|---|---|');
+    let ri=0;
+    q.groups.forEach(grp=>{o.push('| **'+grp.title+'** | | |');
+     grp.rows.forEach(r=>{const idx=ri++,av=m[idx+'_a'],bv=m[idx+'_b'];
+      const at=(av!==undefined&&av!=='')?q.optsA[+av]:'',bt=(bv!==undefined&&bv!=='')?q.optsB[+bv]:'';
+      o.push('| '+r.label+' | '+(at||S.ui.unfilled)+' | '+(bt||S.ui.unfilled)+' |')})})}
+   else if(q.ty==='r'){let t=(v!==undefined&&v!=='')?q.o[+v]:'';
+    if(A[q.id+'_o'])t+=`（${A[q.id+'_o']}）`;o.push('',t||S.ui.unfilled)}
+   else if(q.ty==='c'){let t=(v||'').split('|').filter(x=>x!=='').map(x=>q.o[+x]).join(' / ');
+    if(A[q.id+'_o'])t+=`（${A[q.id+'_o']}）`;o.push('',t||S.ui.unfilled)}
+   else o.push('',(v||'').trim()||S.ui.unfilled);
+   o.push('')})});
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(new Blob(['﻿'+o.join('\n')],{type:'text/markdown;charset=utf-8'}));
+ a.download=`${S.ui.fileName}_${(A.a1||S.ui.unnamed).replace(/[^\w一-龥]/g,'')}.md`;a.click()}
+
+function setLang(l){if(!SURVEY[l])return;LANG=l;S=SURVEY[l];document.body.className=l;
+ document.documentElement.lang=l==='en'?'en':(l==='tw'?'zh-TW':'zh-CN');
+ const s=document.getElementById('langSel');if(s)s.value=l;render()}
+
+/* ── 送出到後端 ───────────────────────────────────────────── */
+function AD(){return ADM[LANG]||ADM.cn}
+const SKEY='adv_ads_sid';
+function sid(){
+ try{let v=localStorage.getItem(SKEY);
+  if(!v){v=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2);
+   localStorage.setItem(SKEY,v)}
+  return v}catch(e){return 'nostore'}}
+function logEv(type,detail){
+ try{fetch('api/log',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
+  body:JSON.stringify({type:type,detail:String(detail||''),lang:LANG,session_id:sid()})}).catch(function(){})}catch(e){}}
+
+function counts(){
+ let tot=0,fil=0;
+ S.sec.forEach(sec=>sec.qs.forEach(q=>{tot++;const v=A[q.id];
+  if(v&&(typeof v==='string'?v.trim():Object.values(v).some(x=>x&&String(x).trim())))fil++}));
+ return{tot:tot,fil:fil}}
+
+async function submitSurvey(){
+ const AA=AD(),msg=document.getElementById('subMsg'),btn=document.getElementById('bSub');
+ const missing=findMissing();
+ if(missing){goToMissing(missing);msg.style.color='#ad3434';msg.textContent=S.ui.needAll;return}
+ if(location.protocol==='file:'){msg.style.color='#96600a';msg.textContent=AA.offlineNote;return}
+ const c=counts();
+ btn.disabled=true;msg.style.color='#586170';msg.textContent=AA.submitting;
+ try{
+  const r=await fetch('api/survey',{method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({name:A.a1,bu:A.a3||'',lang:LANG,session_id:sid(),
+    filled:c.fil,total:c.tot,answers:A})});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  msg.style.color='#1a7a4f';msg.textContent=AA.submitOK;
+  logEv('survey_submit',String(c.fil)+'/'+String(c.tot));
+ }catch(e){msg.style.color='#ad3434';msg.textContent=AA.submitFail}
+ btn.disabled=false}
+
+(function(){let q=null;try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+ setLang(SURVEY[q]?q:'cn');logEv('open','survey')})();
+</script></body></html>
