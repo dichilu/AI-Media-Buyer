@@ -209,6 +209,7 @@ ul{margin:0 0 10px 19px;color:var(--tx2);font-size:13px}li{margin-bottom:4px}
 <div class="pg on" id="p-teams"></div>
 <div class="pg" id="p-dash"></div>
 <div class="pg" id="p-rep"></div>
+<div class="pg" id="p-ops"></div>
 <div class="pg" id="p-crm"></div>
 <div class="pg" id="p-mem"></div>
 
@@ -414,7 +415,8 @@ cn:{
   {id:'f4',ty:'r',q:'每天早上收到 3 张卡片、花 5–10 分钟判断，可以接受吗',o:['可以接受','可以，但希望改成每週一次','太频繁了','其他'],oth:1},
   {id:'f5',ty:'a',q:'拒绝建议时要选一个理由，现有选项够用吗？还需要加什么',
    h:'现有选项：数据不对／我早就做了／不符合当地市场／现在没时间／建议太笼统／不同意根因判断／风险太高'},
-  {id:'f6',ty:'a',q:'除了报表和建议，你还希望这套系统帮你做什么'}]},
+  {id:'f6',ty:'a',q:'除了报表和建议，你还希望这套系统帮你做什么'},
+  {id:'f7',ty:'a',q:'你刚才试用的产品原型（Teams 模拟／仪表板／自助报表／投放操作／商机回馈 CRM／学习纪录这六个画面），栏位或呈现方式有没有想调整的地方',h:'例：某个数字应该放前面、某个画面该多显示什么、某个栏位看不懂在讲什么'}]},
  {s:'G',t:'转换价值权重（请主管与业务窗口共同填写）',star:1,
   note:'这一题是整个专案最重要的商业决策。目前系统把「下载一份型录」和「送出一次询问」都算成 1 次转换，导致报表上的成本无法反映真实获客成本。我们需要各位定义每种行为的相对价值，系统才知道该往哪个方向优化。',qs:[
   {id:'g1',ty:'m',q:'以「一次有效询问 = 100 分」为基准，为其他行为评分',
@@ -515,7 +517,8 @@ tw:{
   {id:'f4',ty:'r',q:'每天早上收到 3 張卡片、花 5–10 分鐘判斷，可以接受嗎',o:['可以接受','可以，但希望改成每週一次','太頻繁了','其他'],oth:1},
   {id:'f5',ty:'a',q:'拒絕建議時要選一個理由，現有選項夠用嗎？還需要加什麼',
    h:'現有選項：資料不對／我早就做了／不符合當地市場／現在沒時間／建議太籠統／不同意根因判斷／風險太高'},
-  {id:'f6',ty:'a',q:'除了報表和建議，你還希望這套系統幫你做什麼'}]},
+  {id:'f6',ty:'a',q:'除了報表和建議，你還希望這套系統幫你做什麼'},
+  {id:'f7',ty:'a',q:'你剛才試用的產品原型（Teams 模擬／儀表板／自助報表／投放操作／商機回饋 CRM／學習紀錄這六個畫面），欄位或呈現方式有沒有想調整的地方',h:'例：某個數字應該放前面、某個畫面該多顯示什麼、某個欄位看不懂在講什麼'}]},
  {s:'G',t:'轉換價值權重（請主管與業務窗口共同填寫）',star:1,
   note:'這一題是整個專案最重要的商業決策。目前系統把「下載一份型錄」和「送出一次詢問」都算成 1 次轉換，導致報表上的成本無法反映真實獲客成本。我們需要各位定義每種行為的相對價值，系統才知道該往哪個方向最佳化。',qs:[
   {id:'g1',ty:'m',q:'以「一次有效詢問 = 100 分」為基準，為其他行為評分',
@@ -616,7 +619,8 @@ en:{
   {id:'f4',ty:'r',q:'Three cards each morning, five to ten minutes to decide. Acceptable?',o:['Yes, that works','Yes, but weekly would suit me better','Too often','Other'],oth:1},
   {id:'f5',ty:'a',q:'Declining a card requires picking a reason. Are the current options enough? What is missing?',
    h:'Current options: the data is wrong / already done it / does not fit the local market / no time right now / too vague / disagree with the diagnosis / too risky'},
-  {id:'f6',ty:'a',q:'Beyond reports and recommendations, what else would you want this system to do?'}]},
+  {id:'f6',ty:'a',q:'Beyond reports and recommendations, what else would you want this system to do?'},
+  {id:'f7',ty:'a',q:'In the prototype you just tried (the six screens: Teams simulation, Dashboard, Self-serve reporting, Ad delivery ops, Pipeline feedback (CRM), Learning log) — is there anything about the fields or how they are displayed that you would change?',h:'e.g. a number that should be more prominent, a screen missing something, a field that was unclear'}]},
  {s:'G',t:'Conversion value weights (managers and the sales contact together)',star:1,
   note:'This is the single most important commercial decision in the project. Today a catalogue download and a genuine inquiry both count as one conversion, which is why the cost figures in the report do not reflect what a customer really costs to acquire. We need you to set the relative value of each action so the system knows what to optimise towards.',qs:[
   {id:'g1',ty:'m',q:'Taking one qualified inquiry as 100 points, score the rest',
@@ -674,8 +678,8 @@ cn:{
  nm:'AI 广告投手', sub:'产品原型 v0.4', bu:'EIOT 事业线 · 百度',
  lArch:'架构图', lSur:'投放逻辑问卷',
  guide:'演示流程',
- gsteps:['早上收到卡片','打开仪表板查证','随时自己产报表','做出决定','看商机回馈','一个月后看学习'],
- tabs:['① Teams','② 仪表板','③ 自助报表','④ 商机回馈（CRM）','⑤ 学习记录'],
+ gsteps:['早上收到卡片','打开仪表板查证','随时自己产报表','做出决定','查看投放操作总览','看商机回馈','一个月后看学习'],
+ tabs:['① Teams','② 仪表板','③ 自助报表','④ 投放操作','⑤ 商机回馈（CRM）','⑥ 学习记录'],
 
  /* Teams */
  tmH:'Teams 上的一天',
@@ -706,8 +710,8 @@ cn:{
  oYoY:'去年同期', oNone:'不比较', oAll:'全部', oPC:'PC', oMobile:'行动',
  oIntent:['全部','品牌词','品类词','竞品词','方案词'],
  oPlat:['百度','Google（未接）','Microsoft（未接）'], oBU:['EIOT','CORP（未接）'],
- bMakeRep:'产报表',
- dSubs:['本月行动重点','总览','计划层','关键词层','资料品质'],
+ bMakeRep:'产报表', bViewOps:'查看投放操作',
+ dSubs:['总览','计划层','关键词层','资料品质'],
  periods:{'2026H1':'2026 上半年','2025H1':'2025 上半年','2024H1':'2024 上半年','2024FY':'2024 全年','ALL':'全部期间'},
 
  aSum:'本期摘要',
@@ -716,6 +720,10 @@ cn:{
  aTrack:'上期建议追踪', aTrackD:'已采纳 7、拒绝 2；其中 4 件已验证有效',
  aBudget:'预算执行率', aBudgetD:'依目前速度，月底预估 ¥10,400',
  aProp:'本期提案（开会从这里开始讨论）',
+
+ /* 投放操作 */
+ opH:'投放操作', opFake:'给广告人员看的操作页 —— 建议卡片来自真实账户数据；关键词×商机对照与否定词建议使用与「商机回馈」页相同的模拟数据（CRM 尚未串接）',
+ opLead:'这一页是账户/计划/关键词层级的具体操作建议，由系统根据数据产生，最终由你判断要不要采纳。「商机回馈」页则是业务与主管看的转换端建议。',
 
  mMain:'主要指标', mMainS:'· 新口径（以询问为主）',
  mSec:'次要指标', mSecS:'· 旧口径，保留对照',
@@ -788,20 +796,20 @@ cn:{
  crDaysRows:[['点击 → 表单','2','同次或数日内'],['表单 → MQL','11','评分达标所需时间'],
   ['MQL → SQL','26','业务接手确认'],['SQL → 商机','43','需求确认与报价'],
   ['商机 → 成交','97','B2B 决策周期'],['<b>点击 → 商机</b>','<b>82</b>','<b>评估窗口至少要 3 个月</b>']],
- cr3:'三、关键词 × 商机 —— 这里会推翻两个直觉',
+ cr3:'一、关键词 × 商机 —— 这里会推翻两个直觉',
  crKwTh:['关键词','花费','询问','询问成本','MQL','商机','商机金额','商机成本','Lead 评分','建议'],
  crAdv:['维持','加码','降级','暂停'],
  crIns1:'<b>反直觉一：看起来最贵的词，其实最该加码。</b><br>「瑞芯微rk3568主板」花了 ¥1,254 只换到 1 个询问，询问成本 ¥1,254，在旧口径下会被判定为最该砍的词。<br>但那 1 个询问变成了商机，金额 ¥860,000。<b>商机成本还是 ¥1,254，投报率却是全账户最高。</b>',
  crIns2:'<b>反直觉二：看起来最便宜的词，其实没有生意。</b><br>「研华 com」询问成本 ¥19.7，全账户最便宜，在旧口径下是明星词。<br>但 86 个询问里没有一个变成商机 —— 业务回报多数是<b>既有客户在查型号资料</b>，不是新需求。',
  crInsNote:'<b>这两种情况，百度和 Google 永远不会告诉你。</b>因为它们看得到「表单被送出」，看不到「那个表单后来有没有变成生意」。',
- cr4:'四、业务退件原因 → 否定词',
+ cr4:'二、业务退件原因 → 否定词',
  crRejH:'业务标记为无效的原因分布',
  crRej:['既有客户查型号资料','学生／学术研究','找技术文档或驱动','竞品调研','联络不上','其他'],
  crRejNote:'这份分类需要 ACN 与业务一起确认是否符合实际。目前是我方建议的分类。',
  crNegH:'由退件原因自动产生的否定词建议',
  crNegBtn:'产生提案卡片',
  crNegNote:'<b>这条线是关键。</b>业务对 lead 的判断，会直接变成投放端的否定词。这是平台拿不到的资料。',
- cr5:'五、这一页产出的四种建议',
+ cr5:'三、这一页产出的四种建议',
  crOutTh:['建议类型','触发条件','动作','为什么平台做不到'],
  crOut:[['加码','询问成本偏高，但商机转化率与金额显著优于平均','提高出价或预算','平台不知道询问后来变成商机没有'],
   ['降级','询问成本很低，但商机转化率接近 0','降价或改素材','平台会把这种词当成明星词继续加码'],
@@ -836,8 +844,8 @@ tw:{
  nm:'AI 廣告投手', sub:'產品原型 v0.4', bu:'EIOT 事業線 · 百度',
  lArch:'架構圖', lSur:'投放邏輯問卷',
  guide:'展示流程',
- gsteps:['早上收到卡片','打開儀表板查證','隨時自己產報表','做出決定','看商機回饋','一個月後看學習'],
- tabs:['① Teams','② 儀表板','③ 自助報表','④ 商機回饋（CRM）','⑤ 學習紀錄'],
+ gsteps:['早上收到卡片','打開儀表板查證','隨時自己產報表','做出決定','查看投放操作總覽','看商機回饋','一個月後看學習'],
+ tabs:['① Teams','② 儀表板','③ 自助報表','④ 投放操作','⑤ 商機回饋（CRM）','⑥ 學習紀錄'],
 
  tmH:'Teams 上的一天',
  tmLead:'正式上線後，助理會在每天早上 9:00 把當天的提案卡片推到 Teams。各位只需要做一個動作：採納，或拒絕並選一個理由。下面的卡片可以直接點。',
@@ -865,8 +873,8 @@ tw:{
  oYoY:'去年同期', oNone:'不比較', oAll:'全部', oPC:'桌機', oMobile:'行動',
  oIntent:['全部','品牌字','品類字','競品字','方案字'],
  oPlat:['百度','Google（未介接）','Microsoft（未介接）'], oBU:['EIOT','CORP（未介接）'],
- bMakeRep:'產報表',
- dSubs:['本月行動重點','總覽','廣告活動層','關鍵字層','資料品質'],
+ bMakeRep:'產報表', bViewOps:'查看投放操作',
+ dSubs:['總覽','廣告活動層','關鍵字層','資料品質'],
  periods:{'2026H1':'2026 上半年','2025H1':'2025 上半年','2024H1':'2024 上半年','2024FY':'2024 全年','ALL':'全部期間'},
 
  aSum:'本期摘要',
@@ -875,6 +883,10 @@ tw:{
  aTrack:'上期建議追蹤', aTrackD:'已採納 7、拒絕 2；其中 4 件已驗證有效',
  aBudget:'預算執行率', aBudgetD:'依目前速度，月底預估 ¥10,400',
  aProp:'本期提案（開會從這裡開始討論）',
+
+ /* 投放操作 */
+ opH:'投放操作', opFake:'給廣告人員看的操作頁 —— 建議卡片來自真實帳戶資料；關鍵字×商機對照與排除關鍵字建議使用與「商機回饋」頁相同的模擬資料（CRM 尚未介接）',
+ opLead:'這一頁是帳戶/廣告活動/關鍵字層級的具體操作建議，由系統根據資料產生，最終由你判斷要不要採納。「商機回饋」頁則是業務與主管看的轉換端建議。',
 
  mMain:'主要指標', mMainS:'· 新口徑（以詢問為主）',
  mSec:'次要指標', mSecS:'· 舊口徑，保留對照',
@@ -945,20 +957,20 @@ tw:{
  crDaysRows:[['點擊 → 表單','2','同次或數日內'],['表單 → MQL','11','評分達標所需時間'],
   ['MQL → SQL','26','業務接手確認'],['SQL → 商機','43','需求確認與報價'],
   ['商機 → 成交','97','B2B 決策週期'],['<b>點擊 → 商機</b>','<b>82</b>','<b>評估區間至少要 3 個月</b>']],
- cr3:'三、關鍵字 × 商機 —— 這裡會推翻兩個直覺',
+ cr3:'一、關鍵字 × 商機 —— 這裡會推翻兩個直覺',
  crKwTh:['關鍵字','花費','詢問','詢問成本','MQL','商機','商機金額','商機成本','Lead 評分','建議'],
  crAdv:['維持','加碼','降級','暫停'],
  crIns1:'<b>反直覺一：看起來最貴的關鍵字，其實最該加碼。</b><br>「瑞芯微rk3568主板」花了 ¥1,254 只換到 1 個詢問，詢問成本 ¥1,254，在舊口徑下會被判定為最該砍的關鍵字。<br>但那 1 個詢問變成了商機，金額 ¥860,000。<b>商機成本還是 ¥1,254，投報率卻是全帳戶最高。</b>',
  crIns2:'<b>反直覺二：看起來最便宜的關鍵字，其實沒有生意。</b><br>「研华 com」詢問成本 ¥19.7，全帳戶最便宜，在舊口徑下是明星關鍵字。<br>但 86 個詢問裡沒有一個變成商機 —— 業務回報多數是<b>既有客戶在查型號資料</b>，不是新需求。',
  crInsNote:'<b>這兩種情況，百度和 Google 永遠不會告訴你。</b>因為它們看得到「表單被送出」，看不到「那個表單後來有沒有變成生意」。',
- cr4:'四、業務退件原因 → 排除關鍵字',
+ cr4:'二、業務退件原因 → 排除關鍵字',
  crRejH:'業務標記為無效的原因分布',
  crRej:['既有客戶查型號資料','學生／學術研究','找技術文件或驅動程式','競品調研','聯絡不上','其他'],
  crRejNote:'這份分類需要 ACN 與業務一起確認是否符合實際。目前是我方建議的分類。',
  crNegH:'由退件原因自動產生的排除關鍵字建議',
  crNegBtn:'產生提案卡片',
  crNegNote:'<b>這條線是關鍵。</b>業務對 lead 的判斷，會直接變成投放端的排除關鍵字。這是平台拿不到的資料。',
- cr5:'五、這一頁產出的四種建議',
+ cr5:'三、這一頁產出的四種建議',
  crOutTh:['建議類型','觸發條件','動作','為什麼平台做不到'],
  crOut:[['加碼','詢問成本偏高，但商機轉換率與金額顯著優於平均','提高出價或預算','平台不知道詢問後來變成商機沒有'],
   ['降級','詢問成本很低，但商機轉換率接近 0','降價或改素材','平台會把這種關鍵字當成明星關鍵字繼續加碼'],
@@ -992,8 +1004,8 @@ en:{
  nm:'AI Media Buyer', sub:'Prototype v0.4', bu:'EIOT business unit · Baidu',
  lArch:'Architecture', lSur:'Media-buying logic survey',
  guide:'Walkthrough',
- gsteps:['Cards arrive in the morning','Verify in the dashboard','Build a report any time','Make the call','See pipeline feedback','Check what it learned'],
- tabs:['① Teams','② Dashboard','③ Self-serve reporting','④ Pipeline feedback (CRM)','⑤ Learning log'],
+ gsteps:['Cards arrive in the morning','Verify in the dashboard','Build a report any time','Make the call','Check ad delivery ops','See pipeline feedback','Check what it learned'],
+ tabs:['① Teams','② Dashboard','③ Self-serve reporting','④ Ad delivery ops','⑤ Pipeline feedback (CRM)','⑥ Learning log'],
 
  tmH:'A day in Teams',
  tmLead:'Once live, the assistant posts each day’s proposal cards to Teams at 09:00. You do one thing: adopt, or decline and pick a reason. The cards below are clickable.',
@@ -1021,8 +1033,8 @@ en:{
  oYoY:'Same period last year', oNone:'No comparison', oAll:'All', oPC:'Desktop', oMobile:'Mobile',
  oIntent:['All','Brand','Category','Competitor','Solution'],
  oPlat:['Baidu','Google (not connected)','Microsoft (not connected)'], oBU:['EIOT','CORP (not connected)'],
- bMakeRep:'Build a report',
- dSubs:['Actions this month','Overview','Campaigns','Keywords','Data quality'],
+ bMakeRep:'Build a report', bViewOps:'View ad delivery ops',
+ dSubs:['Overview','Campaigns','Keywords','Data quality'],
  periods:{'2026H1':'H1 2026','2025H1':'H1 2025','2024H1':'H1 2024','2024FY':'FY 2024','ALL':'All periods'},
 
  aSum:'Period summary',
@@ -1031,6 +1043,10 @@ en:{
  aTrack:'Last period’s recommendations', aTrackD:'7 adopted, 2 declined; 4 confirmed effective',
  aBudget:'Budget pacing', aBudgetD:'At the current rate, ¥10,400 projected by month end',
  aProp:'Proposals this period (start the meeting here)',
+
+ /* Ad delivery ops */
+ opH:'Ad delivery operations', opFake:'This page is for ad-ops staff — the recommendation cards come from the real account data; the keyword × opportunity table and negative-keyword suggestions use the same simulated data as the "Pipeline feedback" page (CRM is not connected yet)',
+ opLead:'This page holds concrete account/campaign/keyword-level actions the system produces from the data, for you to decide whether to adopt. The "Pipeline feedback" page is the conversion-side view for sales and managers.',
 
  mMain:'Primary metrics', mMainS:'· new definition, inquiry-based',
  mSec:'Secondary metrics', mSecS:'· old definition, kept for reference',
@@ -1101,20 +1117,20 @@ en:{
  crDaysRows:[['Click → form','2','Same session or within days'],['Form → MQL','11','Time to reach the scoring threshold'],
   ['MQL → SQL','26','Sales picks it up and qualifies'],['SQL → opportunity','43','Requirements confirmed and quoted'],
   ['Opportunity → closed won','97','B2B decision cycle'],['<b>Click → opportunity</b>','<b>82</b>','<b>Evaluation window must be at least three months</b>']],
- cr3:'3. Keyword × opportunity — where two instincts turn out to be wrong',
+ cr3:'1. Keyword × opportunity — where two instincts turn out to be wrong',
  crKwTh:['Keyword','Spend','Inquiries','Cost per inquiry','MQL','Opportunities','Pipeline value','Cost per opportunity','Lead grade','Recommendation'],
  crAdv:['Hold','Scale up','Scale back','Pause'],
  crIns1:'<b>Wrong instinct #1: the most expensive keyword is the one you should spend more on.</b><br>瑞芯微rk3568主板 spent ¥1,254 for a single inquiry — ¥1,254 per inquiry. Under the old definition it is the most obvious candidate to cut.<br>But that one inquiry became an opportunity worth ¥860,000. <b>Cost per opportunity is still ¥1,254, and its return is the highest in the account.</b>',
  crIns2:'<b>Wrong instinct #2: the cheapest keyword is not producing business.</b><br>研华 com has a cost per inquiry of ¥19.7, the lowest in the account — a star performer under the old definition.<br>Yet not one of its 86 inquiries became an opportunity. Sales reports that most were <b>existing customers looking up part numbers</b>, not new demand.',
  crInsNote:'<b>Neither of these will ever come from Baidu or Google.</b> They can see the form submission; they cannot see whether it turned into business.',
- cr4:'4. Sales disqualification reasons → negative keywords',
+ cr4:'2. Sales disqualification reasons → negative keywords',
  crRejH:'Why sales marks leads as invalid',
  crRej:['Existing customer looking up part numbers','Student or academic research','Looking for documentation or drivers','Competitor research','Unreachable','Other'],
  crRejNote:'ACN and sales need to confirm whether this breakdown matches reality. These categories are our proposal, not established fact.',
  crNegH:'Negative keywords generated from disqualification reasons',
  crNegBtn:'Generate proposal card',
  crNegNote:'<b>This link matters.</b> A sales rep’s judgement on a lead turns directly into a negative keyword on the media side. No platform has access to this.',
- cr5:'5. The four recommendation types this page produces',
+ cr5:'3. The four recommendation types this page produces',
  crOutTh:['Type','Trigger','Action','Why platforms cannot do this'],
  crOut:[['Scale up','Cost per inquiry is high, but opportunity rate and value are well above average','Raise bids or budget','The platform does not know whether an inquiry became an opportunity'],
   ['Scale back','Cost per inquiry is low, but the opportunity rate is near zero','Lower bids or change creative','The platform treats it as a star keyword and keeps pushing budget into it'],
@@ -1431,13 +1447,13 @@ function setLang(l){
  LANG=l;T=I18N[l];C=CONTENT[l];
  document.body.className=l;
  document.documentElement.lang=l==='en'?'en':(l==='tw'?'zh-TW':'zh-CN');
- applyShell();rTeams();rDash();rRep();rCrm();rMem();
+ applyShell();rTeams();rDash();rRep();rOps();rCrm();rMem();
  const s=document.getElementById('langSel');if(s)s.value=l;
  // 管理面板若正開著，內容也要跟著換語言（含問卷題目文字，那是從 SURVEY[LANG] 取的）
  const m=document.getElementById('admModal');
  if(m&&!m.classList.contains('hide')){ADS.pw?admLoad():admGate()}}
 
-const GO=[['teams'],['dash','kw'],['rep'],['teams'],['crm'],['mem']];
+const GO=[['teams'],['dash','kw'],['rep'],['teams'],['ops'],['crm'],['mem']];
 function applyShell(){
  document.title=T.htmlTitle;
  document.getElementById('hNm').textContent=T.nm;
@@ -1455,7 +1471,7 @@ function applyShell(){
  const cur=document.querySelector('.pg.on');
  const curId=cur?cur.id.replace('p-',''):'teams';
  document.getElementById('tabs').innerHTML=T.tabs.map((n,i)=>{
-  const id=['teams','dash','rep','crm','mem'][i];
+  const id=['teams','dash','rep','ops','crm','mem'][i];
   return `<button data-t="${id}" class="${id===curId?'on':''}" onclick="go('${id}')">${n}</button>`}).join('')}
 
 /* ===== helpers ===== */
@@ -1482,7 +1498,7 @@ const PER={'2026H1':['2026-01','2026-06'],'2025H1':['2025-01','2025-06'],
 function shiftY(r,n){return r.map(x=>(parseInt(x.slice(0,4))+n)+x.slice(4))}
 function inR(m,r){return m>=r[0]&&m<=r[1]}
 function rangeOf(key,cmp){const r=PER[key];return cmp==='yoy'?[r,shiftY(r,-1)]:[r,null]}
-const ST={per:'2026H1',cmp:'yoy',sub:'act',plan:'',kwv:'all',kwq:'',kws:'cost',kwd:-1,kwp:0,step:null};
+const ST={per:'2026H1',cmp:'yoy',sub:'ov',plan:'',kwv:'all',kwq:'',kws:'cost',kwd:-1,kwp:0,step:null};
 
 /* ===== charts ===== */
 function cBarLine(rows,bk,lk,bl,ll){
@@ -1607,7 +1623,7 @@ function dashData(){
 
 function rDash(){
  const{r,b,cur,bas}=dashData();
- const ids=['act','ov','plan','kw','dq'];
+ const ids=['ov','plan','kw','dq'];
  $('p-dash').innerHTML=`
  <div class="bar">
   <div class="fg"><label>${T.fPeriod}</label><select onchange="ST.per=this.value;rDash()">
@@ -1619,16 +1635,19 @@ function rDash(){
   <div class="fg"><label>${T.fBU}</label><select>${T.oBU.map(o=>`<option>${o}</option>`).join('')}</select></div>
   <div class="fg"><label>${T.fDev}</label><select><option>${T.oAll}</option><option>${T.oPC}</option><option>${T.oMobile}</option></select></div>
   <div class="fg"><label>${T.fIntent}</label><select>${T.oIntent.map(o=>`<option>${o}</option>`).join('')}</select></div>
-  <span style="flex:1"></span><button class="b" onclick="go('rep')">${T.bMakeRep}</button>
+  <span style="flex:1"></span><button class="b" onclick="go('ops')">${T.bViewOps}</button><button class="b" onclick="go('rep')">${T.bMakeRep}</button>
  </div>
  <div class="tabs" style="border:0;margin-bottom:14px">
   ${T.dSubs.map((n,i)=>`<button class="${ST.sub===ids[i]?'on':''}" onclick="ST.sub='${ids[i]}';rDash()">${n}</button>`).join('')}
  </div>
  <div id="dsub"></div>`;
- ({act:dAct,ov:dOv,plan:dPlan,kw:dKw,dq:dDq})[ST.sub]({r,b,cur,bas})}
+ ({ov:dOv,plan:dPlan,kw:dKw,dq:dDq})[ST.sub]({r,b,cur,bas})}
 
-function dAct({cur}){
- $('dsub').innerHTML=`
+/* ===== (4) 投放操作（给广告人员看）===== */
+function rOps(){
+ const cur=dashData().cur;
+ $('p-ops').innerHTML=`
+ <h2>${T.opH}</h2><p class="lead">${T.opLead}</p>
  <h3 style="margin-top:0">${T.aSum}</h3>
  <p class="lead">${T.aSumT(T.periods[ST.per],F(cur.cost),F(cur.inq),F1(cur.cpi))}</p>
  <div class="gr g3" style="margin-bottom:16px">
@@ -1637,7 +1656,34 @@ function dAct({cur}){
   <div class="box"><h4>${T.aBudget}</h4><div style="font-size:26px;font-weight:600">83%</div><div class="mut">${T.aBudgetD}</div></div>
  </div>
  <h3>${T.aProp}</h3>
- ${C.cards.map((c,i)=>cardHTML(c,100+i,false)).join('')}`}
+ ${C.cards.map((c,i)=>cardHTML(c,100+i,false)).join('')}
+ <div class="nt">${T.opFake}</div>
+ <h3>${T.cr3}</h3>
+ <div class="sc" style="max-height:none"><table><thead><tr>${T.crKwTh.map((h,i)=>`<th class="${i>0&&i<8?'n ':''}na">${h}</th>`).join('')}</tr></thead><tbody>
+ ${KWO.map(r=>{const cpi=r[2]?r[1]/r[2]:null,cpo=r[4]?r[1]/r[4]:null;
+  const bg=r[8]==='a'?'background:#e6f4ec':r[8]==='b'?'background:#fbebeb':'';
+  return `<tr style="${bg}"><td>${r[0]}</td><td class="n">¥${F(r[1])}</td><td class="n">${r[2]}</td>
+  <td class="n">${cpi==null?'—':'¥'+F1(cpi)}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td>
+  <td class="n">${r[5]?'¥'+F(r[5]):'—'}</td><td class="n"><b>${cpo==null?'—':'¥'+F(cpo)}</b></td>
+  <td><span class="tg ${r[6]==='A'?'t3':r[6]==='B'?'t2':(r[6]==='D'||r[6]==='F')?'t0':'tm_'}">${r[6]}</span></td>
+  <td><span class="tg ${r[7]===1?'t3':r[7]>=2?'t0':'tm_'}">${T.crAdv[r[7]]}</span></td></tr>`}).join('')}
+ </tbody></table></div>
+ <div class="gr g2" style="margin-top:12px">
+  <div class="nt o">${T.crIns1}</div><div class="nt d">${T.crIns2}</div>
+ </div>
+ <div class="nt">${T.crInsNote}</div>
+ <h3>${T.cr4}</h3>
+ <div class="gr g2">
+  <div class="box"><h4>${T.crRejH}</h4>
+   ${T.crRej.map((nm,i)=>`<div style="display:grid;grid-template-columns:190px 1fr 40px;gap:8px;align-items:center;margin-bottom:5px;font-size:12.5px">
+    <div>${nm}</div><div style="background:#eef0f4;height:16px;border-radius:3px"><div style="width:${REJV[i]*2.6}%;height:16px;background:#8fa8d8;border-radius:3px"></div></div>
+    <div class="n">${REJV[i]}%</div></div>`).join('')}
+   <div class="mut" style="margin-top:8px">${T.crRejNote}</div></div>
+  <div class="box"><h4>${T.crNegH}</h4>
+   <div class="chk">${C.neg.map(w=>`<label><input type="checkbox" checked>${w}</label>`).join('')}</div>
+   <button class="b p" style="margin-top:8px">${T.crNegBtn}</button>
+   <div class="nt" style="margin-bottom:0">${T.crNegNote}</div></div>
+ </div>`}
 
 function dOv({r,cur,bas}){
  const ms=DATA.months.filter(m=>inR(m.m,r));
@@ -1818,7 +1864,7 @@ function expRep(){
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
  a.download=`EIOT_report_${RS.dim}_${RS.per}.csv`;a.click()}
 
-/* ===== (4) CRM ===== */
+/* ===== (5) CRM ===== */
 function rCrm(){
  const mx=FUNV[0];
  $('p-crm').innerHTML=`
@@ -1846,39 +1892,13 @@ function rCrm(){
   ${T.crDaysRows.map((r,i)=>`<tr${i===5?' style="background:#fdf2df"':''}><td>${r[0]}</td><td class="n">${r[1]}</td><td class="mut">${r[2]}</td></tr>`).join('')}
   </tbody></table></div></div>
  </div>
- <h3>${T.cr3}</h3>
- <div class="sc" style="max-height:none"><table><thead><tr>${T.crKwTh.map((h,i)=>`<th class="${i>0&&i<8?'n ':''}na">${h}</th>`).join('')}</tr></thead><tbody>
- ${KWO.map(r=>{const cpi=r[2]?r[1]/r[2]:null,cpo=r[4]?r[1]/r[4]:null;
-  const bg=r[8]==='a'?'background:#e6f4ec':r[8]==='b'?'background:#fbebeb':'';
-  return `<tr style="${bg}"><td>${r[0]}</td><td class="n">¥${F(r[1])}</td><td class="n">${r[2]}</td>
-  <td class="n">${cpi==null?'—':'¥'+F1(cpi)}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td>
-  <td class="n">${r[5]?'¥'+F(r[5]):'—'}</td><td class="n"><b>${cpo==null?'—':'¥'+F(cpo)}</b></td>
-  <td><span class="tg ${r[6]==='A'?'t3':r[6]==='B'?'t2':(r[6]==='D'||r[6]==='F')?'t0':'tm_'}">${r[6]}</span></td>
-  <td><span class="tg ${r[7]===1?'t3':r[7]>=2?'t0':'tm_'}">${T.crAdv[r[7]]}</span></td></tr>`}).join('')}
- </tbody></table></div>
- <div class="gr g2" style="margin-top:12px">
-  <div class="nt o">${T.crIns1}</div><div class="nt d">${T.crIns2}</div>
- </div>
- <div class="nt">${T.crInsNote}</div>
- <h3>${T.cr4}</h3>
- <div class="gr g2">
-  <div class="box"><h4>${T.crRejH}</h4>
-   ${T.crRej.map((nm,i)=>`<div style="display:grid;grid-template-columns:190px 1fr 40px;gap:8px;align-items:center;margin-bottom:5px;font-size:12.5px">
-    <div>${nm}</div><div style="background:#eef0f4;height:16px;border-radius:3px"><div style="width:${REJV[i]*2.6}%;height:16px;background:#8fa8d8;border-radius:3px"></div></div>
-    <div class="n">${REJV[i]}%</div></div>`).join('')}
-   <div class="mut" style="margin-top:8px">${T.crRejNote}</div></div>
-  <div class="box"><h4>${T.crNegH}</h4>
-   <div class="chk">${C.neg.map(w=>`<label><input type="checkbox" checked>${w}</label>`).join('')}</div>
-   <button class="b p" style="margin-top:8px">${T.crNegBtn}</button>
-   <div class="nt" style="margin-bottom:0">${T.crNegNote}</div></div>
- </div>
  <h3>${T.cr5}</h3>
  <div class="sc" style="max-height:none"><table><thead><tr>${T.crOutTh.map(h=>`<th class="na">${h}</th>`).join('')}</tr></thead><tbody>
  ${T.crOut.map((r,i)=>`<tr><td><span class="tg ${['t3','t0','t1','t2'][i]}">${r[0]}</span></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}
  </tbody></table></div>
  <div class="nt w">${T.crTech}</div>`}
 
-/* ===== (5) learning ===== */
+/* ===== (6) learning ===== */
 function rMem(){
  $('p-mem').innerHTML=`
  <h2>${T.mmH}</h2><span class="fake">${T.mmFake}</span><p class="lead">${T.mmLead}</p>
@@ -1961,7 +1981,7 @@ async function admAuth(){
   if(r.status===401){$('admErr').textContent=A.pwWrong;return}
   if(!r.ok)throw new Error('HTTP '+r.status);
   ADS.pw=pw;await admLoad();
- }catch(e){$('admErr').textContent=A.connFail}}
+ }catch(e){$('admErr').textContent=A.pwWrong}}
 
 async function admLoad(){
  const A=AD();
@@ -1969,12 +1989,19 @@ async function admLoad(){
  $('admTools').innerHTML='';
  $('admBody').innerHTML=`<div class="mut" style="padding:30px 0;text-align:center">${A.verifying}</div>`;
  const q='password='+encodeURIComponent(ADS.pw);
+ let sv=null,an=null;
  try{
-  const [a,b]=await Promise.all([
-   fetch('api/admin/survey?'+q).then(r=>r.json()),
-   fetch('api/admin/analytics?'+q+'&period='+ADS.period).then(r=>r.json())]);
-  ADS.sv=a;ADS.an=b;
- }catch(e){$('admBody').innerHTML=`<div class="err" style="padding:30px 0;text-align:center">${A.connFail}</div>`;return}
+  const r=await fetch('api/admin/survey?'+q);
+  if(!r.ok)throw new Error('no backend');
+  sv=await r.json();
+ }catch(e){sv=null}
+ if(!sv){$('admBody').innerHTML=`<div class="err" style="padding:30px 0;text-align:center">${A.connFail}</div>`;return}
+ try{
+  const r=await fetch('api/admin/analytics?'+q+'&period='+ADS.period);
+  if(!r.ok)throw new Error('no backend');
+  an=await r.json();
+ }catch(e){an={total:0,prev_total:0,sessions:0,prev_sessions:0,by_type:{},by_lang:{},by_page:{},by_decision:{},by_reason:{},trend:{}}}
+ ADS.sv=sv;ADS.an=an;
  admPaint()}
 
 function admPaint(){
@@ -2117,7 +2144,7 @@ function admToggle(id){
 function admUsage(an){
  const A=AD();
  const LN={cn:'简体中文',tw:'繁體中文',en:'English'};
- const PG={teams:T.tabs[0],dash:T.tabs[1],rep:T.tabs[2],crm:T.tabs[3],mem:T.tabs[4]};
+ const PG={teams:T.tabs[0],dash:T.tabs[1],rep:T.tabs[2],ops:T.tabs[3],crm:T.tabs[4],mem:T.tabs[5]};
  const DEC={adopt:T.bAdopt,decline:T.bDecline,later:T.bLater};
  const dec=an.by_decision||{};
  const decTotal=Object.values(dec).reduce((a,b)=>a+b,0);
@@ -2149,7 +2176,7 @@ function admUsage(an){
  document.body.className=l;
  document.documentElement.lang=l==='en'?'en':(l==='tw'?'zh-TW':'zh-CN');
  const s=document.getElementById('langSel');if(s)s.value=l;
- applyShell();rTeams();rDash();rRep();rCrm();rMem();
+ applyShell();rTeams();rDash();rRep();rOps();rCrm();rMem();
  logEv('open','index');logEv('page','teams');
 })();
 

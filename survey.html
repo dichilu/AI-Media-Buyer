@@ -65,7 +65,6 @@ button.b.p{background:#004280;color:#fff;border-color:#004280}button.b.p:hover{o
   </select>
 </div>
 
-<div style="background:#fdf2df;color:#96600a;font-size:12.5px;text-align:center;padding:9px 14px;border-bottom:1px solid #e8d0a0">此為 GitHub Pages 靜態展示版，無後端可接收送出，請用「匯出並回傳」下載檔案後回傳 · This is a static GitHub Pages preview — submissions are not received. Use “Export and return” instead. · 这是 GitHub Pages 静态预览版，无法送出，请使用「汇出并回传」</div>
 <div class="w"><div id="head"></div><div id="form"></div></div>
 
 <div class="bar">
@@ -265,7 +264,8 @@ cn:{
   {id:'f4',ty:'r',q:'每天早上收到 3 张卡片、花 5–10 分钟判断，可以接受吗',o:['可以接受','可以，但希望改成每週一次','太频繁了','其他'],oth:1},
   {id:'f5',ty:'a',q:'拒绝建议时要选一个理由，现有选项够用吗？还需要加什么',
    h:'现有选项：数据不对／我早就做了／不符合当地市场／现在没时间／建议太笼统／不同意根因判断／风险太高'},
-  {id:'f6',ty:'a',q:'除了报表和建议，你还希望这套系统帮你做什么'}]},
+  {id:'f6',ty:'a',q:'除了报表和建议，你还希望这套系统帮你做什么'},
+  {id:'f7',ty:'a',q:'你刚才试用的产品原型（Teams 模拟／仪表板／自助报表／投放操作／商机回馈 CRM／学习纪录这六个画面），栏位或呈现方式有没有想调整的地方',h:'例：某个数字应该放前面、某个画面该多显示什么、某个栏位看不懂在讲什么'}]},
  {s:'G',t:'转换价值权重（请主管与业务窗口共同填写）',star:1,
   note:'这一题是整个专案最重要的商业决策。目前系统把「下载一份型录」和「送出一次询问」都算成 1 次转换，导致报表上的成本无法反映真实获客成本。我们需要各位定义每种行为的相对价值，系统才知道该往哪个方向优化。',qs:[
   {id:'g1',ty:'m',q:'以「一次有效询问 = 100 分」为基准，为其他行为评分',
@@ -366,7 +366,8 @@ tw:{
   {id:'f4',ty:'r',q:'每天早上收到 3 張卡片、花 5–10 分鐘判斷，可以接受嗎',o:['可以接受','可以，但希望改成每週一次','太頻繁了','其他'],oth:1},
   {id:'f5',ty:'a',q:'拒絕建議時要選一個理由，現有選項夠用嗎？還需要加什麼',
    h:'現有選項：資料不對／我早就做了／不符合當地市場／現在沒時間／建議太籠統／不同意根因判斷／風險太高'},
-  {id:'f6',ty:'a',q:'除了報表和建議，你還希望這套系統幫你做什麼'}]},
+  {id:'f6',ty:'a',q:'除了報表和建議，你還希望這套系統幫你做什麼'},
+  {id:'f7',ty:'a',q:'你剛才試用的產品原型（Teams 模擬／儀表板／自助報表／投放操作／商機回饋 CRM／學習紀錄這六個畫面），欄位或呈現方式有沒有想調整的地方',h:'例：某個數字應該放前面、某個畫面該多顯示什麼、某個欄位看不懂在講什麼'}]},
  {s:'G',t:'轉換價值權重（請主管與業務窗口共同填寫）',star:1,
   note:'這一題是整個專案最重要的商業決策。目前系統把「下載一份型錄」和「送出一次詢問」都算成 1 次轉換，導致報表上的成本無法反映真實獲客成本。我們需要各位定義每種行為的相對價值，系統才知道該往哪個方向最佳化。',qs:[
   {id:'g1',ty:'m',q:'以「一次有效詢問 = 100 分」為基準，為其他行為評分',
@@ -467,7 +468,8 @@ en:{
   {id:'f4',ty:'r',q:'Three cards each morning, five to ten minutes to decide. Acceptable?',o:['Yes, that works','Yes, but weekly would suit me better','Too often','Other'],oth:1},
   {id:'f5',ty:'a',q:'Declining a card requires picking a reason. Are the current options enough? What is missing?',
    h:'Current options: the data is wrong / already done it / does not fit the local market / no time right now / too vague / disagree with the diagnosis / too risky'},
-  {id:'f6',ty:'a',q:'Beyond reports and recommendations, what else would you want this system to do?'}]},
+  {id:'f6',ty:'a',q:'Beyond reports and recommendations, what else would you want this system to do?'},
+  {id:'f7',ty:'a',q:'In the prototype you just tried (the six screens: Teams simulation, Dashboard, Self-serve reporting, Ad delivery ops, Pipeline feedback (CRM), Learning log) — is there anything about the fields or how they are displayed that you would change?',h:'e.g. a number that should be more prominent, a screen missing something, a field that was unclear'}]},
  {s:'G',t:'Conversion value weights (managers and the sales contact together)',star:1,
   note:'This is the single most important commercial decision in the project. Today a catalogue download and a genuine inquiry both count as one conversion, which is why the cost figures in the report do not reflect what a customer really costs to acquire. We need you to set the relative value of each action so the system knows what to optimise towards.',qs:[
   {id:'g1',ty:'m',q:'Taking one qualified inquiry as 100 points, score the rest',
@@ -645,7 +647,6 @@ function setLang(l){if(!SURVEY[l])return;LANG=l;S=SURVEY[l];document.body.classN
  document.documentElement.lang=l==='en'?'en':(l==='tw'?'zh-TW':'zh-CN');
  const s=document.getElementById('langSel');if(s)s.value=l;render()}
 
-/* ── 送出到後端 ───────────────────────────────────────────── */
 function AD(){return ADM[LANG]||ADM.cn}
 const SKEY='adv_ads_sid';
 function sid(){
