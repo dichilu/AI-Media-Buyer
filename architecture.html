@@ -46,12 +46,19 @@ td{padding:7px 9px;border-bottom:1px solid #e3e6ec;vertical-align:top}
 .tlc .car{font-size:12px;color:#8a93a2;transition:transform .15s}
 .tlc.open .car{transform:rotate(90deg)}
 .tlc .bd_{max-height:0;overflow:hidden;transition:max-height .2s ease}
-.tlc.open .bd_{max-height:600px}
+.tlc.open .bd_{max-height:2600px}
 .tlc .bdi{padding:0 16px 16px;border-top:1px solid #e3e6ec;margin-top:2px;padding-top:12px}
 .tlc .lbl{font-size:11px;color:#8a93a2;margin:10px 0 5px;text-transform:uppercase;letter-spacing:.03em}
 .tlc .lbl:first-child{margin-top:0}
 .tlc .goal_{font-size:13.5px;color:#16191d;line-height:1.6}
-.deprow{display:flex;align-items:center;gap:9px;padding:5px 0;font-size:13px;color:#3a4250}
+.intgrow{padding:8px 0;border-bottom:1px solid #eef0f4}
+.intgrow:last-child{border-bottom:0}
+.intgn{font-size:13.5px;font-weight:600;color:#16191d}
+.intgp{font-size:12.5px;color:#586170;margin-top:3px;line-height:1.6}
+.deprow{display:flex;align-items:flex-start;gap:9px;padding:6px 0}
+.deprow .dot_{margin-top:6px}
+.depn{font-size:13px;color:#16191d}
+.depw{font-size:12px;color:#8a93a2;margin-top:2px;line-height:1.5}
 .dot_{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
 .dot_.done{background:#1a7a4f}.dot_.active{background:#96600a}.dot_.blocked{background:#ad3434}.dot_.todo{background:#ccd2dc}
 .donecrit{font-size:13px;color:#586170;line-height:1.6}
@@ -122,23 +129,55 @@ cn:{
  h5:'五、开发时程 —— 从demo到正式系统',
  p5:'点每张卡片看细节。状态是实测过的现况，不是预先排好的进度表。',
  stLg:[['done','已解决'],['active','进行中'],['blocked','阻塞中'],['todo','尚未开始']],
+ secLbl:{intro:'这阶段在做什么',integ:'要串接的系统',prep:'事前准备',outcome:'完成后长什么样',why:'跟前后阶段的关系'},
  phases:[
   {n:'第一阶段',t:'资料地基',status:'active',
-   goal:'百度／Google API 接上，取代人工 Excel 汇出；资料品质检查自动化',
-   deps:[['部署环境（adv-ai-ads，China North 3）','done'],['百度推广 API 开发者权限','active'],['Google Ads Developer Token／OAuth','todo'],['中国区可用 LLM 服务确认','todo']],
-   done:'能自动、每日拉到真实帐户资料，资料品质检查结果可信'},
+   intro:'现在每个月要花好几天，人工把百度后台的广告成效资料整理成 Excel 报表。这阶段要做的是让电脑自动、每天去跟广告平台要资料，不用人工复制贴上；同时电脑要自动检查这批资料有没有缺漏、有没有异常，不能默默把烂资料往下传。',
+   integ:[
+    ['百度推广 API（百度营销开发者中心）','取得广告帐户的花费、点击、关键词、出价等原始资料——这是整套系统最核心的资料来源，后面所有「该不该暂停关键词、该不该调整出价」的判断都要靠这批资料才能自动进行'],
+    ['Google Ads API（透过 MCC）','同样取得 Google 广告帐户的原始资料，一组 MCC 凭证可涵盖所有国家帐户']],
+   prep:[
+    ['百度推广开发者资格审核','没有这个，程式完全连不上百度的资料，审核通常要 1–2 週，越早申请越不会卡到后面进度','active'],
+    ['百度推广「新建应用」（应用名称／图标／描述／回调地址／接口清单）','资质审核过了之后还要多做这一步，才能拿到真正能长期使用的 Token，不是审核过就直接能用','todo'],
+    ['Google Ads Developer Token ＋ OAuth 凭证','没有这个，程式连不上 Google 广告帐户的资料','todo'],
+    ['中国区可用 LLM 服务确认','这阶段本身不一定用得到，但因为牵涉到资料能不能出境、模型选型要及早确定，会影响之后规则引擎能用什么工具','todo'],
+    ['部署环境','已解决——`adv-ai-ads` 实测确认可用，位在 China North 3，资料留在中国大陆境内','done']],
+   outcome:'每天早上，系统会自动去跟百度、Google 要昨天的资料，不用人去后台汇出 Excel。资料进来后，系统会自动检查：有没有连续好几个月都没进资料（像 demo 发现的 2025 年 7–12 月缺漏那种情况）、有没有转换率超过 100% 的异常、有没有花钱但零转换超过 N 天的关键词——这些现在 demo「资料品质」页看到的检查项，会变成真的每天自动执行，不是只是展示用的画面。',
+   why:'第二阶段的判断逻辑引擎，前提是有真实、可信的资料可以判断。没有这阶段，后面所有判断都只能建立在人工整理、可能已经过时的 Excel 上，跟现在的做法没有本质差异。'},
   {n:'第二阶段',t:'判断逻辑引擎',status:'blocked',
-   goal:'问卷回收的判断逻辑转成「投放操作」页那五张卡片的生成规则；架构通用，不写死绑定 EIOT',
-   deps:[['问卷回收（目前 0 笔）','blocked'],['第一阶段完成','todo']],
-   done:'规则引擎能对真实帐户资料产生跟 demo 卡片同等资讯量的建议，且架构上能直接扩增新事业线'},
+   intro:'第一阶段解决「资料怎么进来」，这阶段要解决「电脑怎么知道该怎么判断」。demo「投放操作」页那五张建议卡（该不该暂停关键词、该不该调高出价）现在用的都是示范资料，这阶段要把真正投手脑子里的判断经验（透过 46 题正式问卷收集）变成电脑真的能执行的规则。',
+   integ:[
+    ['问卷回收系统（已存在，架在 Azure 上）','把回收到的真实答案读出来，转成规则的原始素材'],
+    ['卡片送出管道（先用最简单的方式：email 或 Teams 讯息）','让规则产生的建议真的送到投手手上，不用等漂亮介面做完才能用']],
+   prep:[
+    ['问卷样本数要足够','不是回收到 0 笔就能开始，需要够多真实回答才能萃取出可信赖的规则，具体门槛还没跟使用者逐项确认','blocked'],
+    ['第一阶段完成','没有真实资料，规则再准也没有东西可以套用','todo'],
+    ['规则引擎架构确认为通用设计','不写死绑定 EIOT 或任何单一事业线／平台，这样以后其他事业线只是「补资料＋补规则」，不用重写引擎本身','done']],
+   outcome:'每天早上，系统会根据前一天的真实帐户资料，加上问卷收集到的判断逻辑，自动产生类似 demo「投放操作」页那五张卡片的建议，送到投手手上（先是简单版本，可能是一封 email 或一则 Teams 讯息，不是漂亮的网页）。投手可以采纳或拒绝，拒绝要选一个理由。',
+   why:'这阶段做完，系统才第一次真的用「真实资料 ＋ 真实判断逻辑」自己产生建议，不再是 demo 里的示范内容。'},
   {n:'第三阶段',t:'回馈回路',status:'todo',
-   goal:'采纳／拒绝／理由记录 ＋ 排程回头验证有没有效',
-   deps:[['第二阶段卡片机制先能稳定运作','todo']],
-   done:'系统会自己统计采纳率、自动停发低效建议类型'},
+   intro:'前两阶段做完，系统已经能每天发建议卡片，但发了建议不代表系统会变聪明——如果没有人记录「投手最后采纳了没、多久后回头看这个建议是不是真的有效」，系统就永远是一套静态规则，跟广告平台自带的建议没什么两样。这阶段要把「决定」跟「后续验证」都记下来，让系统自己知道哪些建议准、哪些常被打枪。',
+   integ:[
+    ['决策记录储存（资料库或档案）','记录每张卡片的采纳／拒绝／理由，这是之后统计采纳率、找出哪类建议不准的原始资料'],
+    ['排程回头检查机制','例如 28 天后自动比对：当初采纳的建议，实际帐户数据有没有真的变好']],
+   prep:[
+    ['第二阶段的卡片机制先要能稳定运作','没有稳定产生的卡片，就没有东西可以记录跟回头验证','todo']],
+   outcome:'demo「学习记录」页现在看到的采纳率统计、自动停发低效建议类型、战术库，这些现在都是示范资料；这阶段完成后，会变成根据真实决策记录算出来的真数字。',
+   why:'这一步是系统「真的会不会学习」的分水岭——没有这阶段，系统只是每天重复发同样逻辑的建议，不会因为过去做对做错而调整。'},
   {n:'第四阶段',t:'扩展',status:'todo',
-   goal:'Teams 正式串接、仪表板搬进 Power BI、Salesforce MCAE 串接商机回馈页、扩平台／国家',
-   deps:[['第一至三阶段都验证有效','todo']],
-   done:'ACN 同仁能在正式管道（Teams／Power BI）使用系统，商机回馈页使用真实 CRM 资料'}]},
+   intro:'前三阶段做完，核心回路（资料进来 → 系统判断 → 人决定 → 验证有没有效）已经跑通，但只在百度＋EIOT这个最小范围里验证过。这阶段是把已经验证有效的东西，换上正式的门面（Teams 真的串接、仪表板搬进 Power BI），并且扩大范围（更多平台、更多事业线、加上商机回馈的 CRM 资料）。',
+   integ:[
+    ['Microsoft Teams（Bot Framework 或 Power Automate）','正式的每日卡片推送管道，取代第二阶段的简单送法'],
+    ['Power BI','正式仪表板，取代 demo 的自制网页，因为 Power BI 能接上 IT 既有的授权与治理机制'],
+    ['Salesforce MCAE','商机回馈页需要的真实 CRM 资料（商机、成交），取代目前的示意资料'],
+    ['Microsoft Advertising／LinkedIn／Meta 广告 API','扩增更多广告平台的资料来源，优先序低于百度／Google']],
+   prep:[
+    ['第一至三阶段都验证有效','没有验证过的东西不该急着扩大范围，扩大只会把还没解决的问题一起放大','todo'],
+    ['IT 开通 Teams App 註册权限、Power Automate 授权','没有这个，Teams 卡片推送做不出来','todo'],
+    ['Power BI Workspace 建立权限、确认席次','已知为 Pro 授权，但还没确认工作区跟席次数量','todo'],
+    ['MCAE 表单是否保留 UTM 隐藏栏位','决定百度资料能不能归因到商机，这是商机回馈页能不能串真实资料的关键前提','todo']],
+   outcome:'ACN 同仁不用来看这个 demo 网页，改在 Teams 里收到卡片、在 Power BI 里看仪表板，跟平常的工作流程整合在一起。商机回馈页不再是示意资料，是真的接到 Salesforce 的数字。',
+   why:'这是唯一会让「同仁真正在日常工作里用到这套系统」发生的阶段，前三阶段都只是在验证「这套逻辑走不走得通」。'}]},
 
 tw:{
  title:'AI 廣告投手 · 架構圖', nm:'AI 廣告投手 · 架構圖',
@@ -188,23 +227,55 @@ tw:{
  h5:'五、開發時程 —— 從demo到正式系統',
  p5:'點每張卡片看細節。狀態是實測過的現況，不是預先排好的進度表。',
  stLg:[['done','已解決'],['active','進行中'],['blocked','阻塞中'],['todo','尚未開始']],
+ secLbl:{intro:'這階段在做什麼',integ:'要串接的系統',prep:'事前準備',outcome:'完成後長什麼樣',why:'跟前後階段的關係'},
  phases:[
   {n:'第一階段',t:'資料地基',status:'active',
-   goal:'百度／Google API 接上，取代人工 Excel 匯出；資料品質檢查自動化',
-   deps:[['部署環境（adv-ai-ads，China North 3）','done'],['百度推廣 API 開發者權限','active'],['Google Ads Developer Token／OAuth','todo'],['中國區可用 LLM 服務確認','todo']],
-   done:'能自動、每日拉到真實帳戶資料，資料品質檢查結果可信'},
+   intro:'現在每個月要花好幾天，人工把百度後台的廣告成效資料整理成 Excel 報表。這階段要做的是讓電腦自動、每天去跟廣告平台要資料，不用人工複製貼上；同時電腦要自動檢查這批資料有沒有缺漏、有沒有異常，不能默默把爛資料往下傳。',
+   integ:[
+    ['百度推廣 API（百度營銷開發者中心）','取得廣告帳戶的花費、點擊、關鍵字、出價等原始資料——這是整套系統最核心的資料來源，後面所有「該不該暫停關鍵字、該不該調整出價」的判斷都要靠這批資料才能自動進行'],
+    ['Google Ads API（透過 MCC）','同樣取得 Google 廣告帳戶的原始資料，一組 MCC 憑證可涵蓋所有國家帳戶']],
+   prep:[
+    ['百度推廣開發者資格審核','沒有這個，程式完全連不上百度的資料，審核通常要 1–2 週，越早申請越不會卡到後面進度','active'],
+    ['百度推廣「新建應用」（應用名稱／圖標／描述／回調地址／接口清單）','資質審核過了之後還要多做這一步，才能拿到真正能長期使用的 Token，不是審核過就直接能用','todo'],
+    ['Google Ads Developer Token ＋ OAuth 憑證','沒有這個，程式連不上 Google 廣告帳戶的資料','todo'],
+    ['中國區可用 LLM 服務確認','這階段本身不一定用得到，但因為牽涉到資料能不能出境、模型選型要及早確定，會影響之後規則引擎能用什麼工具','todo'],
+    ['部署環境','已解決——`adv-ai-ads` 實測確認可用，位在 China North 3，資料留在中國大陸境內','done']],
+   outcome:'每天早上，系統會自動去跟百度、Google 要昨天的資料，不用人去後台匯出 Excel。資料進來後，系統會自動檢查：有沒有連續好幾個月都沒進資料（像 demo 發現的 2025 年 7–12 月缺漏那種情況）、有沒有轉換率超過 100% 的異常、有沒有花錢但零轉換超過 N 天的關鍵字——這些現在 demo「資料品質」頁看到的檢查項，會變成真的每天自動執行，不是只是展示用的畫面。',
+   why:'第二階段的判斷邏輯引擎，前提是有真實、可信的資料可以判斷。沒有這階段，後面所有判斷都只能建立在人工整理、可能已經過時的 Excel 上，跟現在的做法沒有本質差異。'},
   {n:'第二階段',t:'判斷邏輯引擎',status:'blocked',
-   goal:'問卷回收的判斷邏輯轉成「投放操作」頁那五張卡片的生成規則；架構通用，不寫死綁定 EIOT',
-   deps:[['問卷回收（目前 0 筆）','blocked'],['第一階段完成','todo']],
-   done:'規則引擎能對真實帳戶資料產生跟 demo 卡片同等資訊量的建議，且架構上能直接擴增新事業線'},
+   intro:'第一階段解決「資料怎麼進來」，這階段要解決「電腦怎麼知道該怎麼判斷」。demo「投放操作」頁那五張建議卡（該不該暫停關鍵字、該不該調高出價）現在用的都是示範資料，這階段要把真正投手腦子裡的判斷經驗（透過 46 題正式問卷收集）變成電腦真的能執行的規則。',
+   integ:[
+    ['問卷回收系統（已存在，架在 Azure 上）','把回收到的真實答案讀出來，轉成規則的原始素材'],
+    ['卡片送出管道（先用最簡單的方式：email 或 Teams 訊息）','讓規則產生的建議真的送到投手手上，不用等漂亮介面做完才能用']],
+   prep:[
+    ['問卷樣本數要足夠','不是回收到 0 筆就能開始，需要夠多真實回答才能萃取出可信賴的規則，具體門檻還沒跟使用者逐項確認','blocked'],
+    ['第一階段完成','沒有真實資料，規則再準也沒有東西可以套用','todo'],
+    ['規則引擎架構確認為通用設計','不寫死綁定 EIOT 或任何單一事業線／平台，這樣以後其他事業線只是「補資料＋補規則」，不用重寫引擎本身','done']],
+   outcome:'每天早上，系統會根據前一天的真實帳戶資料，加上問卷收集到的判斷邏輯，自動產生類似 demo「投放操作」頁那五張卡片的建議，送到投手手上（先是簡單版本，可能是一封 email 或一則 Teams 訊息，不是漂亮的網頁）。投手可以採納或拒絕，拒絕要選一個理由。',
+   why:'這階段做完，系統才第一次真的用「真實資料 ＋ 真實判斷邏輯」自己產生建議，不再是 demo 裡的示範內容。'},
   {n:'第三階段',t:'回饋迴路',status:'todo',
-   goal:'採納／拒絕／理由記錄 ＋ 排程回頭驗證有沒有效',
-   deps:[['第二階段卡片機制先能穩定運作','todo']],
-   done:'系統會自己統計採納率、自動停發低效建議類型'},
+   intro:'前兩階段做完，系統已經能每天發建議卡片，但發了建議不代表系統會變聰明——如果沒有人記錄「投手最後採納了沒、多久後回頭看這個建議是不是真的有效」，系統就永遠是一套靜態規則，跟廣告平台自帶的建議沒什麼兩樣。這階段要把「決定」跟「後續驗證」都記下來，讓系統自己知道哪些建議準、哪些常被打槍。',
+   integ:[
+    ['決策記錄儲存（資料庫或檔案）','記錄每張卡片的採納／拒絕／理由，這是之後統計採納率、找出哪類建議不準的原始資料'],
+    ['排程回頭檢查機制','例如 28 天後自動比對：當初採納的建議，實際帳戶數據有沒有真的變好']],
+   prep:[
+    ['第二階段的卡片機制先要能穩定運作','沒有穩定產生的卡片，就沒有東西可以記錄跟回頭驗證','todo']],
+   outcome:'demo「學習記錄」頁現在看到的採納率統計、自動停發低效建議類型、戰術庫，這些現在都是示範資料；這階段完成後，會變成根據真實決策記錄算出來的真數字。',
+   why:'這一步是系統「真的會不會學習」的分水嶺——沒有這階段，系統只是每天重複發同樣邏輯的建議，不會因為過去做對做錯而調整。'},
   {n:'第四階段',t:'擴展',status:'todo',
-   goal:'Teams 正式串接、儀表板搬進 Power BI、Salesforce MCAE 串接商機回饋頁、擴平台／國家',
-   deps:[['第一至三階段都驗證有效','todo']],
-   done:'ACN 同仁能在正式管道（Teams／Power BI）使用系統，商機回饋頁使用真實 CRM 資料'}]},
+   intro:'前三階段做完，核心迴路（資料進來 → 系統判斷 → 人決定 → 驗證有沒有效）已經跑通，但只在百度＋EIOT這個最小範圍裡驗證過。這階段是把已經驗證有效的東西，換上正式的門面（Teams 真的串接、儀表板搬進 Power BI），並且擴大範圍（更多平台、更多事業線、加上商機回饋的 CRM 資料）。',
+   integ:[
+    ['Microsoft Teams（Bot Framework 或 Power Automate）','正式的每日卡片推送管道，取代第二階段的簡單送法'],
+    ['Power BI','正式儀表板，取代 demo 的自製網頁，因為 Power BI 能接上 IT 既有的授權與治理機制'],
+    ['Salesforce MCAE','商機回饋頁需要的真實 CRM 資料（商機、成交），取代目前的示意資料'],
+    ['Microsoft Advertising／LinkedIn／Meta 廣告 API','擴增更多廣告平台的資料來源，優先序低於百度／Google']],
+   prep:[
+    ['第一至三階段都驗證有效','沒有驗證過的東西不該急著擴大範圍，擴大只會把還沒解決的問題一起放大','todo'],
+    ['IT 開通 Teams App 註冊權限、Power Automate 授權','沒有這個，Teams 卡片推送做不出來','todo'],
+    ['Power BI Workspace 建立權限、確認席次','已知為 Pro 授權，但還沒確認工作區跟席次數量','todo'],
+    ['MCAE 表單是否保留 UTM 隱藏欄位','決定百度資料能不能歸因到商機，這是商機回饋頁能不能串真實資料的關鍵前提','todo']],
+   outcome:'ACN 同仁不用來看這個 demo 網頁，改在 Teams 裡收到卡片、在 Power BI 裡看儀表板，跟平常的工作流程整合在一起。商機回饋頁不再是示意資料，是真的接到 Salesforce 的數字。',
+   why:'這是唯一會讓「同仁真正在日常工作裡用到這套系統」發生的階段，前三階段都只是在驗證「這套邏輯走不走得通」。'}]},
 
 en:{
  title:'AI Media Buyer · Architecture', nm:'AI Media Buyer · Architecture',
@@ -254,23 +325,55 @@ en:{
  h5:'5. Build timeline — from demo to real system',
  p5:'Click any card for detail. Status reflects what has actually been verified, not a pre-set schedule.',
  stLg:[['done','Resolved'],['active','In progress'],['blocked','Blocked'],['todo','Not started']],
+ secLbl:{intro:'What this phase does',integ:'Systems to connect',prep:'What has to be ready first',outcome:'What "done" looks like',why:'How it fits with the other phases'},
  phases:[
   {n:'Phase 1',t:'Data foundation',status:'active',
-   goal:'Connect the Baidu and Google APIs to replace manual Excel exports; automate the data-quality checks',
-   deps:[['Deployment environment (adv-ai-ads, China North 3)','done'],['Baidu marketing API developer access','active'],['Google Ads Developer Token / OAuth','todo'],['Confirm which China-region LLM service is allowed','todo']],
-   done:'Real account data is pulled automatically every day, and the data-quality checks can be trusted'},
+   intro:'Right now, turning Baidu\'s ad performance data into an Excel report takes several days of manual work every month. This phase gets a computer to pull that data automatically, every day, straight from the ad platforms — no copy-pasting. At the same time it has to automatically check the data for gaps or anomalies, rather than silently passing bad data downstream.',
+   integ:[
+    ['Baidu Marketing API (Baidu Business Developer Center)','Pulls the ad account\'s raw spend, clicks, keyword and bid data — this is the single most important data source in the whole system, since every later decision about pausing a keyword or adjusting a bid depends on it'],
+    ['Google Ads API (via MCC)','Pulls the same kind of raw data from Google Ads; one set of MCC credentials covers every country\'s accounts']],
+   prep:[
+    ['Baidu Marketing developer qualification review','Without this the code cannot reach Baidu\'s data at all. Review usually takes 1–2 weeks, so applying early matters','active'],
+    ['Baidu Marketing "create an app" step (app name / icon / description / callback URL / API list)','Passing the qualification review is not enough — this extra step is what actually issues a long-lived token','todo'],
+    ['Google Ads Developer Token + OAuth credentials','Without these the code cannot reach Google Ads account data','todo'],
+    ['Confirm which China-region LLM service is allowed','May not be needed in this exact phase, but it touches data-residency rules and should be settled early, since it decides what tools the rules engine can later use','todo'],
+    ['Deployment environment','Resolved — `adv-ai-ads` is confirmed working, hosted in China North 3, keeping data inside mainland China','done']],
+   outcome:'Every morning, the system automatically pulls yesterday\'s data from Baidu and Google — nobody exports an Excel file by hand. Once the data arrives, the system automatically checks for things like: several consecutive months with no data at all (the same kind of gap the demo found for Jul–Dec 2025), a conversion rate above 100%, or a keyword that has spent money with zero conversions for N days. The checks currently shown on the demo\'s "Data quality" tab become things that actually run every day, not just a display.',
+   why:'Phase 2\'s judgment-logic engine only works if there is real, trustworthy data to judge. Without this phase, every later decision would still rest on a manually assembled, possibly stale Excel file — no real change from today.'},
   {n:'Phase 2',t:'Judgment-logic engine',status:'blocked',
-   goal:'Turn survey answers into the generation rules behind the five cards on the "Ad delivery ops" page; the architecture must be generic, not hard-wired to EIOT',
-   deps:[['Survey responses (currently 0)','blocked'],['Phase 1 complete','todo']],
-   done:'The rules engine produces recommendations as rich as the demo cards from real account data, and new business units can be added without rewriting the engine'},
+   intro:'Phase 1 solved how data gets in; this phase solves how the computer knows what to do with it. The five recommendation cards on the demo\'s "Ad delivery ops" page (pause this keyword, raise that bid) currently run on sample data. This phase turns the real judgment that lives in media buyers\' heads — collected through the 46-question survey — into rules a computer can actually execute.',
+   integ:[
+    ['Survey response system (already live on Azure)','Reads out the real answers that were collected, as the raw material the rules are built from'],
+    ['Card delivery channel (the simplest version first: email or a Teams message)','Gets the rules\' recommendations in front of a media buyer, without waiting for a polished interface']],
+   prep:[
+    ['Enough survey responses','Zero responses is not enough to start from — a reliable rule needs a real sample of answers; the exact threshold has not been confirmed item-by-item with the user yet','blocked'],
+    ['Phase 1 complete','However good the rules are, there is nothing real for them to run against without Phase 1\'s data','todo'],
+    ['Rules-engine architecture confirmed as generic','Not hard-wired to EIOT or any single business unit — so adding another business unit later is just "add its data and rules," not a rewrite of the engine itself','done']],
+   outcome:'Every morning, the system generates recommendations — as rich as the demo\'s "Ad delivery ops" cards — from yesterday\'s real account data combined with the judgment logic gathered from the survey, and delivers them to media buyers (a simple version at first: an email or a Teams message, not a polished page). Buyers can adopt or decline, and declining requires picking a reason.',
+   why:'This is the first point where the system produces recommendations from real data and real judgment logic, rather than demo content.'},
   {n:'Phase 3',t:'Feedback loop',status:'todo',
-   goal:'Record adopt/decline decisions and reasons, then schedule a follow-up check on whether each one actually worked',
-   deps:[['Phase 2\'s card mechanism running stably first','todo']],
-   done:'The system tracks its own adoption rate and automatically stops issuing low-performing recommendation types'},
+   intro:'Once the first two phases are done, the system can already push recommendation cards every day — but issuing recommendations does not make a system smarter. Unless someone records whether a buyer adopted a recommendation and, later, whether it actually worked, the system stays a fixed rule set, no better than what the ad platforms already offer. This phase records both the decision and its later, real-world outcome, so the system learns which recommendation types are reliable and which keep getting rejected.',
+   integ:[
+    ['Decision log storage (a database or file store)','Records every card\'s adopt/decline decision and reason — the raw material for later adoption-rate statistics and for spotting unreliable recommendation types'],
+    ['Scheduled follow-up check','For example, 28 days later, automatically compare: did the account data actually improve after an adopted recommendation?']],
+   prep:[
+    ['Phase 2\'s card mechanism running stably first','Without a steady stream of cards there is nothing to log or follow up on','todo']],
+   outcome:'The adoption-rate statistics, the auto-retirement of underperforming recommendation types, and the tactics library currently shown on the demo\'s "Learning log" page are all sample data today; after this phase they become real numbers computed from real decision records.',
+   why:'This is the point where the system genuinely starts learning, rather than repeating the same logic every day regardless of past outcomes.'},
   {n:'Phase 4',t:'Expansion',status:'todo',
-   goal:'Real Teams integration, dashboard migration to Power BI, Salesforce MCAE for the pipeline-feedback page, more platforms and countries',
-   deps:[['Phases 1 through 3 all validated','todo']],
-   done:'ACN colleagues use the system through official channels (Teams / Power BI), and pipeline feedback runs on real CRM data'}]},
+   intro:'After the first three phases, the core loop — data in, system judges, a person decides, the outcome gets checked — is running, but only proven within the smallest possible scope: Baidu and EIOT. This phase takes what has been validated and moves it onto the real, permanent tools (a genuine Teams integration, the dashboard rebuilt in Power BI), and widens the scope to more platforms, more business units, and real CRM data for pipeline feedback.',
+   integ:[
+    ['Microsoft Teams (Bot Framework or Power Automate)','The real daily card-delivery channel, replacing Phase 2\'s simple email/message version'],
+    ['Power BI','The permanent dashboard, replacing the demo\'s custom-built page, because Power BI plugs into IT\'s existing licensing and governance instead of requiring a new tool to maintain long-term'],
+    ['Salesforce MCAE','The real CRM data (opportunities, closed deals) the pipeline-feedback page needs, replacing today\'s illustrative placeholder data'],
+    ['Microsoft Advertising / LinkedIn / Meta ad APIs','More ad-platform data sources, lower priority than Baidu and Google']],
+   prep:[
+    ['Phases 1 through 3 all validated','Nothing unproven should be scaled up — doing so just scales up whatever is still broken','todo'],
+    ['IT to enable Teams App registration and Power Automate licensing','Without this, Teams card delivery cannot be built','todo'],
+    ['Power BI workspace creation rights and confirmed seat count','Pro licensing is already known to exist, but the workspace and seat allocation are not yet confirmed','todo'],
+    ['Whether the MCAE form still has its hidden UTM fields','Decides whether Baidu data can be attributed to an opportunity at all — the key precondition for the pipeline-feedback page to run on real data','todo']],
+   outcome:'ACN colleagues no longer need to open this demo page — they receive cards in Teams and view the dashboard in Power BI, folded into their normal workflow. The pipeline-feedback page runs on real Salesforce numbers instead of illustrative data.',
+   why:'This is the only phase where colleagues actually start using the system day to day — the first three phases exist purely to prove the underlying logic holds up.'}]},
 };
 
 </script>
@@ -336,6 +439,7 @@ const TL={open:0};
 function tlToggle(i){TL.open=TL.open===i?-1:i;renderTimeline()}
 function renderTimeline(){
  const el=document.getElementById('tl');if(!el)return;
+ const L=A.secLbl;
  el.innerHTML=A.phases.map((p,i)=>{
   const isOpen=TL.open===i;
   return `<div class="tlc${isOpen?' open':''}" onclick="tlToggle(${i})">
@@ -343,12 +447,16 @@ function renderTimeline(){
     <span class="chip ${p.status}">${(A.stLg.find(s=>s[0]===p.status)||['',p.status])[1]}</span>
     <span class="car">▸</span></div>
    <div class="bd_"><div class="bdi">
-    <div class="lbl">${LANG==='en'?'Goal':(LANG==='tw'?'目標':'目标')}</div>
-    <div class="goal_">${p.goal}</div>
-    <div class="lbl">${LANG==='en'?'Dependencies / status':(LANG==='tw'?'依賴項／現況':'依赖项／现况')}</div>
-    ${p.deps.map(d=>`<div class="deprow"><span class="dot_ ${d[1]}"></span>${d[0]}</div>`).join('')}
-    <div class="lbl">${LANG==='en'?'Done when':(LANG==='tw'?'完成標準':'完成标准')}</div>
-    <div class="donecrit">${p.done}</div>
+    <div class="lbl">${L.intro}</div>
+    <div class="goal_">${p.intro}</div>
+    <div class="lbl">${L.integ}</div>
+    ${p.integ.map(d=>`<div class="intgrow"><div class="intgn">${d[0]}</div><div class="intgp">${d[1]}</div></div>`).join('')}
+    <div class="lbl">${L.prep}</div>
+    ${p.prep.map(d=>`<div class="deprow"><span class="dot_ ${d[2]}"></span><div><div class="depn">${d[0]}</div><div class="depw">${d[1]}</div></div></div>`).join('')}
+    <div class="lbl">${L.outcome}</div>
+    <div class="donecrit">${p.outcome}</div>
+    <div class="lbl">${L.why}</div>
+    <div class="donecrit">${p.why}</div>
    </div></div></div>`}).join('')}
 
 function timeline(){
